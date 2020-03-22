@@ -42,7 +42,7 @@ var notes = [
   new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: "qr" }),
   new VF.StaveNote({clef: "treble", keys: ["c/4", "e/4", "g/4"], duration: "q" }),
 
-  new VF.BarNote({type: 'single'}),
+  // new VF.BarNote({type: 'single'}),
 
   new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "w" }),
   new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: "qr" }),
@@ -55,7 +55,7 @@ var notes2 = [
   new VF.StaveNote({clef: "bass", keys: ["d/3"], duration: "qr" }),
   new VF.StaveNote({clef: "bass", keys: ["c/3", "e/3", "g/3"], duration: "q" }),
 
-  new VF.BarNote({type: 'single'}),
+  // new VF.BarNote({type: 'single'}),
 
   new VF.StaveNote({clef: "bass", keys: ["d/4"], duration: "w" }),
   new VF.StaveNote({clef: "bass", keys: ["b/4"], duration: "qr" }),
