@@ -10,6 +10,14 @@ var bass_current_x = 0;
 var treble_staves = [];
 var bass_staves = [];
 
+var measures_by_line = 4;
+var measure_width = 300;
+
+function setup_music_renderer(_measures_by_line, _measure_width) {
+  measures_by_line = _measures_by_line;
+  measure_width = _measure_width;
+}
+
 function draw_score(div_id, w, h) {
   var div = document.getElementById(div_id);
   var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
@@ -19,15 +27,14 @@ function draw_score(div_id, w, h) {
 }
 
 function draw_initial_measures(treble_notes, bass_notes) {
-  var stave_treble = new VF.Stave(100, 10, 300);
-  var stave_bass = new VF.Stave(100, 110, 300);
+  var stave_treble = new VF.Stave(50, 10, measure_width);
+  var stave_bass = new VF.Stave(50, 110, measure_width);
 
   stave_treble.addClef("treble").addTimeSignature("4/4").addKeySignature("G").setContext(context);
   stave_bass.addClef("bass").addTimeSignature("4/4").setContext(context);
 
   var connector = new VF.StaveConnector(stave_treble, stave_bass);
   connector.setType(VF.StaveConnector.type.BRACE);
-  connector.setText('Piano');
   connector.setContext(context);
 
   var line = new VF.StaveConnector(stave_treble, stave_bass);
@@ -67,16 +74,26 @@ function draw_measure(treble_notes, bass_notes) {
   var width = 300;
   var stave;
 
-  tstave = new VF.Stave(treble_current_x, treble_y, 300);
-  bstave = new VF.Stave(bass_current_x, bass_y, 300);
+  tstave = new VF.Stave(treble_current_x, treble_y, measure_width);
+  bstave = new VF.Stave(bass_current_x, bass_y, measure_width);
 
   tstave.setContext(context).draw();
   bstave.setContext(context).draw();
 
+  if(treble_notes == null) {
+    treble_notes = [
+      new VF.StaveNote({keys: ["b/4"], duration: "1r", align_center: true }),
+    ];
+  }
+  if(bass_notes == null) {
+    bass_notes = [
+      new VF.StaveNote({keys: ["b/4"], duration: "1r", align_center: true }),
+    ];
+  }
+
   var tbeams = VF.Beam.generateBeams(treble_notes);
   var bbeams = VF.Beam.generateBeams(bass_notes);
 
-  
   VF.Formatter.FormatAndDraw(context, tstave, treble_notes);
   VF.Formatter.FormatAndDraw(context, bstave, bass_notes);
 
@@ -112,11 +129,14 @@ var tnotes = [
 ];
 
 var bnotes = [
-  new VF.StaveNote({keys: ["b/4"], duration: "1r", align_center: true }),
+  new VF.StaveNote({clef: "bass", keys: ["c/3"], duration: "8" }),
+  new VF.StaveNote({clef: "bass", keys: ["d/3"], duration: "16" }),
+  new VF.StaveNote({clef: "bass", keys: ["a/3"], duration: "16" }),
+  new VF.StaveNote({clef: "bass", keys: ["b/3"], duration: "q" }),
 ];
 
 draw_score("score", 1000, 1000);
 draw_measure(tnotes, bnotes);
-draw_measure(tnotes, bnotes);
-draw_measure(tnotes, bnotes);
+draw_measure(tnotes, null);
+draw_measure(null, bnotes);
 draw_ending_bar();
