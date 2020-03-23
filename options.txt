@@ -1,0 +1,30 @@
+TIME_SIGNATURE
+
+SCALE
+
+OCTAVE
+0: reste dans l'octave de base
+1: sort de l'octave de base
+
+VARIETY
+
+INDEPENDENCE
+
+POSITION
+
+CHORDS
+0: none
+2: 2 notes 
+3: 3 notes
+4: 4 notes
+
+LEAP
+2: interval de 2 notes
+3: interval de 3 notes
+5: interval de 5 notes
+8: interval d'un octave
+8+: interval de plus d'un octave
+
+ACCIDENTALS
+0 : non
+1 : oui

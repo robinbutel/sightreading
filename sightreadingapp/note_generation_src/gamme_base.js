@@ -28,5 +28,9 @@ function first_mesure(tnum,bnum)
     return notes;
 }
 
+function get_notes(time_signature,scale,octave,variety,independence,position,chords,leap,accidental)
+{
+
+}
 
 // new VF.StaveNote({clef: "bass", keys: ["d/3"], duration: "h"})
