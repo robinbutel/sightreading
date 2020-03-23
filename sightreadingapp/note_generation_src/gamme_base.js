@@ -28,7 +28,7 @@ function first_mesure(tnum,bnum)
     return notes;
 }
 
-function get_notes(time_signature,scale,octave,variety,independence,position,chords,leap,accidental)
+function get_notes(time_signature,scale,variety,independence,position,octave,chords,leap,accidental)
 {
 
 }

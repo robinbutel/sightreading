@@ -2,15 +2,15 @@ TIME_SIGNATURE
 
 SCALE
 
-OCTAVE
-0: reste dans l'octave de base
-1: sort de l'octave de base
-
 VARIETY
 
 INDEPENDENCE
 
 POSITION
+
+OCTAVE
+0: reste dans l'octave de base
+1: sort de l'octave de base
 
 CHORDS
 0: none
