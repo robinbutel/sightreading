@@ -3,7 +3,7 @@ level = 0;
 timesig = "4/4";
 scale = "C Major";
 
-tabs = ["instrument", "level", "timesig", "scale"];
+tabs = ["instrument", "difficulty", "timesig", "scale"];
 
 current_tab = 0;
 
@@ -42,12 +42,25 @@ function validate() {
 }
 
 function tab_goto(event) {
+  goto_id = event.target.id.split("-")[1];
+  if (goto_id == null) {
+      goto_id = event.target.parentElement.id.split("-")[1];
+  }
+  goto_tab = tabs.indexOf(goto_id);
 
+  last_tab = current_tab;
+  current_tab = goto_tab;
+
+  $("#tab-" + tabs[current_tab] + " .tab-item").addClass("active");
+  $("#tab-" + tabs[last_tab] + " .tab-item").removeClass("active");
+
+  $("#pick-" + tabs[current_tab]).show();
+  $("#pick-" + tabs[last_tab]).hide();
 }
 
 $(function () {
   $("#pick-instrument .element").click(pick_instrument);
   $("#pick-level .element").click(pick_level);
 
-  $("#navbar-menu .tab").click(tab_goto);
+  $("#navbar-menu .tab-item").click(tab_goto);
 });
