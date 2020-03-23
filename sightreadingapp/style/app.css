@@ -6,6 +6,11 @@ body {
 * {
 	margin: 0;
 	padding: 0;
+  box-sizing: inherit;
+}
+
+*:before, *:after {
+  box-sizing: inherit;
 }
 
 #app {
@@ -31,7 +36,7 @@ body {
   display: flex;
   flex-flow: row nowrap;
 
-  z-index: 10;
+  z-index: 1;
 }
 
 .navbar .navicon {

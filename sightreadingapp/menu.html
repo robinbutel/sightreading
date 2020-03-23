@@ -81,27 +81,48 @@
         <div class="pick-title">
           Difficulty settings
         </div>
-        <div class="pick-list">
-          <!-- <div class="pick-little-title">
-            Hand Independance :
-          </div> -->
-          <label class="check-container">Hand Independance
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-          </label>
-          <div class="wrapper typo">Largest Leap
-          <div class="list"><span class="placeholder">1st</span>
-            <ul class="list__ul">
-              <li><a href="">2nd</a></li>
-              <li><a href="">3rd</a></li>
-              <li><a href="">4th</a></li>
-              <li><a href="">5th</a></li>
-              <li><a href="">6th</a></li>
-              <li><a href="">octave</a></li>
-              <li><a href="">octave+</a></li>
-            </ul>
-          </div>
+        <div class="hand-independence pick-submenu"><p>Hand Independence</p>
+          <select data-menu>
+            <option selected>Never Play together</option>
+            <option>Simple on one hand</option>
+            <option>Both complex</option>
+          </select>
         </div>
+        <div class="leap pick-submenu"><p>Largest Leap</p>
+          <select data-menu>
+            <option selected>2nd</option>
+            <option>3rd</option>
+            <option>4st</option>
+            <option>5st</option>
+            <option>6st</option>
+            <option>7st</option>
+            <option>Octave</option>
+            <option>Octave+</option>
+          </select>
+        </div>
+        <div class="pick-submenu"><p>Position</p>
+          <select data-menu>
+            <option selected>Keep starting hand position</option>
+            <option>Don't keep starting hand position</option>
+          </select>
+        </div>
+        <div class="pick-submenu"><p>Octave</p>
+          <select data-menu>
+            <option selected>Stay in octave</option>
+            <option>Possibly go out of octave</option>
+          </select>
+        </div>
+        <div class="pick-submenu"><p>Choords</p>
+          <select data-menu>
+            <option selected>None</option>
+            <option>2 notes</option>
+            <option>3 notes</option>
+            <option>4 notes</option>
+          </select>
+        </div>
+        <div class="pick-submenu submenu-text">
+          <input id="c1" type="checkbox">
+          <label for="c1">Accidentals</label>
         </div>
       </div>
     </div>

@@ -59,10 +59,17 @@ body {
   max-width: 800px;
 }
 
+.pick-menu .pick-submenu {
+  margin: 20px 10px 20px 50px;
+  display: flex;
+  align-items: center;
+}
+
 .pick-menu .pick-title {
   color: #5f616b;
   font-weight: 100;
   font-size: 22px;
+  margin-bottom: 30px;
 }
 
 .pick-menu .pick-little-title {
@@ -72,7 +79,6 @@ body {
 
 .pick-menu .check-container {
   color: #5f616b;
-  font-weight: 100;
 }
 
 .pick-menu .pick-list {
@@ -117,6 +123,10 @@ body {
   align-items: flex-start;
 }
 
+#pick-difficulty .select-menu {
+  margin-left: 30px;
+}
+
 #pick-difficulty .difficulty-menu {
   display: flex;
   flex-direction: column;
@@ -124,6 +134,16 @@ body {
 
 #pick-difficulty .pick-list {
   width: 100%;
+}
+
+#pick-difficulty p {
+  color: #5f616b;
+  font-size: 18px;
+}
+
+#pick-difficulty .submenu-text {
+  color: #5f616b;
+  font-size: 18px;
 }
 
 .level-description {
