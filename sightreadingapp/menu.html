@@ -6,10 +6,13 @@
 
   <link rel="stylesheet" href="style/app.css"/>
   <link rel="stylesheet" href="style/menu.css"/>
+  <link rel="stylesheet" href="style/custom-elements.css"/>
 
   <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="lib/vexflow-min.js"></script>
   <script type="text/javascript" src="lib/feather.min.js"></script>
+
+  <script type="text/javascript" src="style/custom-elements.js"></script>
 </head>
 <body>
   <noscript>This application can't work without javascript !</noscript>
@@ -20,7 +23,7 @@
           <use xlink:href="icons/feather-sprite.svg#music"/>
         </svg>
       </div>
-      <div class="tab">
+      <div class="tab left-border">
         <div class="tab-item active" id="tab-instrument">
           <div class="tab-text">
             Instrument
@@ -30,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div class="tab">
+      <div class="tab left-border">
         <div class="tab-item" id="tab-difficulty">
           <div class="tab-text">
             Difficulty settings
@@ -40,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="tab">
+      <div class="tab left-border">
         <div class="tab-item" id="tab-timesig">
           <div class="tab-text">
             Time Signature
@@ -50,7 +53,7 @@
           </div>
         </div>
       </div>
-      <div class="tab">
+      <div class="tab left-border">
         <div class="tab-item" id="tab-scale">
           <div class="tab-text">
             Scale
@@ -74,15 +77,39 @@
     </div>
 
     <div id="pick-difficulty" class="pick-menu" style="display: none;">
-      <div class="pick-title">
-        Difficulty settings
-      </div>
-      <div class="pick-list">
-        <div class="pick-little-title">
-          Hand Independance :
+      <div class="difficulty-menu">
+        <div class="pick-title">
+          Difficulty settings
+        </div>
+        <div class="pick-list">
+          <!-- <div class="pick-little-title">
+            Hand Independance :
+          </div> -->
+          <label class="check-container">Hand Independance
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+          </label>
+          <div class="wrapper typo">Largest Leap
+          <div class="list"><span class="placeholder">1st</span>
+            <ul class="list__ul">
+              <li><a href="">2nd</a></li>
+              <li><a href="">3rd</a></li>
+              <li><a href="">4th</a></li>
+              <li><a href="">5th</a></li>
+              <li><a href="">6th</a></li>
+              <li><a href="">octave</a></li>
+              <li><a href="">octave+</a></li>
+            </ul>
+          </div>
+        </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="level-description">
+    <div class="rhythms"><div class="description-title">Rhythms :</div></div>
+    <div class="leap"><div class="description-title">Largest Leap :</div><div class="description-text">5st</div></div>
   </div>
 
   <script type="text/javascript" src="app/menu.js"></script>
