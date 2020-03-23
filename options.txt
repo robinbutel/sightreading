@@ -3,10 +3,20 @@ TIME_SIGNATURE
 SCALE
 
 VARIETY
+0: only whites
+1: halfs and over
+2: quarters and over
+3: eights and over
+4: Sixteenths and over
 
 INDEPENDENCE
+0: Never Play together
+1: Simple on one hand
+2: both complex
 
 POSITION
+0: Keep starting hand position 
+1: Don't keep starting hand position 
 
 OCTAVE
 0: reste dans l'octave de base
