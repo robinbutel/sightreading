@@ -2,38 +2,61 @@
 <head>
   <title>Testing VexFlow</title>
 
+  <meta charset="utf-8"/>
+
   <link rel="stylesheet" href="style/app.css">
 
   <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="lib/vexflow-min.js"></script>
+  <script type="text/javascript" src="lib/feather.min.js"></script>
 </head>
 <body>
   <noscript>This application can't work without javascript !</noscript>
-  <div id="navbar-animmenu">
-          <ul class="show-dropdown main-navbar">
-              <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-              <li>
-                  <a href="javascript:void(0);">Dashboard</a>
-              </li>
-              <li class="active">
-                  <a href="javascript:void(0);">Address Book</a>
-              </li>
-              <li>
-                  <a href="javascript:void(0);">Components</a>
-              </li>
-              <li>
-                  <a href="javascript:void(0);">Calendar</a>
-              </li>
-              <li>
-                  <a href="javascript:void(0);">Charts</a>
-              </li>
-
-
-          </ul>
+  <nav id="navbar-menu">
+    <div class="tab-icon">
+      <svg class="feather">
+        <use xlink:href="icons/music.svg#music"/>
+      </svg>
+    </div>
+    <div class="tab">
+      <div class="tab-item active">
+        <div class="tab-text">
+          Tab 1
+        </div>
       </div>
+    </div>
+    <div class="tab">
+      <div class="tab-item">
+        <div class="tab-text">
+          Tab 2
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav id="navbar-playing" style="display: none">
+    <div class="tab">
+      <div class="tab-item active">
+        <div class="tab-text">
+          Tab 1
+        </div>
+      </div>
+    </div>
+    <div class="tab">
+      <div class="tab-item">
+        <div class="tab-text">
+          Tab 2
+        </div>
+      </div>
+    </div>
+  </nav>
 
   <div id="score" class="center"></div>
 
   <script type="text/javascript" src="style/style.js"></script>
   <script type="text/javascript" src="app/music-renderer.js"></script>
+
+  <script>
+    feather.replace();
+  </script>
 </body>
