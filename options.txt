@@ -1,6 +1,8 @@
 TIME_SIGNATURE
 
 SCALE
+0: C Major
+1: G Major
 
 VARIETY
 0: only whites
