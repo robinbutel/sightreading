@@ -1,0 +1,23 @@
+body {
+  background-color: #fbfbfb;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.navbar {
+  margin: 0;
+  
+  top: 0;
+  left: 0;
+  right: 0;
+
+  position: sticky;
+  width: 100%;
+  background-color: #ffffff;
+  border: solid 1px #e2e8ed;
+  box-shadow: 0 1px 18px #eee;
+}
