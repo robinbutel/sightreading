@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <title>Testing VexFlow</title>
+  <title>Sight Reading</title>
 
   <meta charset="utf-8"/>
 
@@ -12,49 +12,59 @@
 </head>
 <body>
   <noscript>This application can't work without javascript !</noscript>
-  <nav id="navbar-menu">
-    <div class="tab-icon">
-      <svg class="feather">
-        <use xlink:href="file:///home/arthur/projects/sightreadingmanufacture/icons/feather-sprite.svg#circle"/>
-      </svg>
-    </div>
-    <div class="tab">
-      <div class="tab-item active">
-        <div class="tab-text">
-          Tab 1
+  <div id="app">
+    <nav id="navbar-playing" class="navbar">
+      <div class="navicon">
+        <svg class="feather">
+          <use xlink:href="icons/feather-sprite.svg#music"/>
+        </svg>
+      </div>
+      <div class="middle">
+        <button id="play-btn" class="nav-btn music-btn">
+          <svg class="feather">
+            <use xlink:href="icons/feather-sprite.svg#play-circle"/>
+          </svg>
+        </button>
+        <button id="pause-btn" class="nav-btn music-btn" style="display: none;">
+          <svg class="feather">
+            <use xlink:href="icons/feather-sprite.svg#pause-circle"/>
+          </svg>
+        </button>
+      </div>
+      <div class="right">
+        <div class="right-box">
+          <button id="next-btn" class="nav-btn">
+            Next
+          </button>
+        </div>
+        <div class="right-box left-border">
+          <button id="settings-btn" class="nav-btn">
+            <svg class="feather">
+              <use xlink:href="icons/feather-sprite.svg#settings"/>
+            </svg>
+          </button>
+        </div>
+        <div class="right-box left-border">
+          <button id="maximize-btn" class="nav-btn">
+            <svg class="feather">
+              <use xlink:href="icons/feather-sprite.svg#maximize"/>
+            </svg>
+          </button>
+          <button id="minimize-btn" class="nav-btn" style="display: none;">
+            <svg class="feather">
+              <use xlink:href="icons/feather-sprite.svg#minimize"/>
+            </svg>
+          </button>
         </div>
       </div>
-    </div>
-    <div class="tab">
-      <div class="tab-item">
-        <div class="tab-text">
-          Tab 2
-        </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <nav id="navbar-playing" style="display: none">
-    <div class="tab">
-      <div class="tab-item active">
-        <div class="tab-text">
-          Tab 1
-        </div>
-      </div>
-    </div>
-    <div class="tab">
-      <div class="tab-item">
-        <div class="tab-text">
-          Tab 2
-        </div>
-      </div>
-    </div>
-  </nav>
+    <div id="score" class="center"></div>
+    <div class="copyright">Sight reading application &#169; Je sais pas qui 2020</div>
+  </div>
 
-  <div id="score" class="center"></div>
-
-  <script type="text/javascript" src="style/style.js"></script>
-  <script type="text/javascript" src="app/music-renderer.js"></script>
+  <script type="text/javascript" src="app/page.js"></script>
+  <script type="text/javascript" src="app/music.js"></script>
 
   <script>
     feather.replace();

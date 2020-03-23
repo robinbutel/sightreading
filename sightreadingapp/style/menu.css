@@ -1,0 +1,67 @@
+/*
+  Grey text color : #5f616b
+*/
+
+body {
+	font-family: 'Lato', sans-serif;
+  background-color: #fbfbfb;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.pick-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.pick-menu .pick-title {
+  color: #5f616b;
+  font-weight: 100;
+  font-size: 22px;
+}
+
+.pick-menu .pick-list {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pick-menu .pick-list>.element {
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  padding: 50px 80px;
+  margin: 10px 20px 20px 20px;
+  text-align: center;
+}
+
+.pick-menu .pick-list>.element:hover {
+  cursor: pointer;
+}
+
+.pick-menu .pick-list>.piano {
+  color: #2f9da6;
+}
+
+.pick-menu .pick-list>.piano:hover {
+  border: 1.5px solid #2f9da6;
+}
+
+.pick-menu .pick-list>.element>.icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  fill: #2f9da6;
+  stroke: #2f9da6;
+}
