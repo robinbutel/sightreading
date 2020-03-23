@@ -1,6 +1,8 @@
 var cmaj_rh = ["c/4", "d/4", "e/4", "f/4", "g/4", "a/4", "b/4", "c/5"];
 var cmaj_lh = ["c/3", "d/3", "e/3", "f/3", "g/3", "a/3", "b/3", "c/4"];
-var temp = ["","w","h","q","q"];
+var temp = ["","w","h","q","8","16"];
+
+
 
 var VF = Vex.Flox;
 
@@ -28,7 +30,17 @@ function first_mesure(tnum,bnum)
     return notes;
 }
 
-function get_notes(time_signature,scale,variety,independence,position,octave,chords,leap,accidental)
+function get_mesure(time_signature, scale, variety)
+{
+    var tnotes = [];
+    var bnotes = [];
+    var notes = {treble:tnotes,bass:bnotes};
+    var tbeats = time_signature[0];
+    var bbeats = time_signature[0];
+
+}
+
+function get_notes(time_signature, scale, variety, independence, position, octave, chords, leap, accidental)
 {
 
 }
