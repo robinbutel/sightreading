@@ -168,7 +168,7 @@ var bnotes = [
   new VF.StaveNote({clef: "bass", keys: ["d/3"], duration: "h"})
 ];
 
-draw_score("score", 2000, 5000);
+draw_score("score", 2000, 400);
 draw_measure(tnotes, bnotes);
 draw_measure(tnotes, null);
 draw_measure(null, bnotes);
