@@ -162,10 +162,11 @@ var tnotes = [
 
 var bnotes = [
   new VF.StaveNote({clef: "bass", keys: ["c/3"], duration: "8" }),
-  new VF.StaveNote({clef: "bass", keys: ["d/3"], duration: "16" }),
-  new VF.StaveNote({clef: "bass", keys: ["a/3"], duration: "16" }),
+  new VF.StaveNote({clef: "bass", keys: ["d/3"], duration: "8" }),
+  new VF.StaveNote({clef: "bass", keys: ["c/3"], duration: "8" }),
+  new VF.StaveNote({clef: "bass", keys: ["d/3"], duration: "8" }),
   new VF.StaveNote({clef: "bass", keys: ["b/3"], duration: "q" }),
-  new VF.StaveNote({clef: "bass", keys: ["d/3"], duration: "h"})
+  new VF.StaveNote({clef: "bass", keys: ["d/3"], duration: "q"})
 ];
 
 $(function() {
@@ -181,9 +182,13 @@ $(function() {
   draw_measure(tnotes, null);
   draw_measure(null, bnotes);
   draw_measure(tnotes, bnotes);
-  draw_measure(tnotes, bnotes);
-  draw_measure(tnotes, null);
-  draw_measure(null, bnotes);
-  draw_measure(tnotes, bnotes);
+  m1 = first_mesure(4, 4);
+  draw_measure(m1.treble, m1.bass);
+  m1 = first_mesure(4, 4);
+  draw_measure(m1.treble, m1.bass);
+  m1 = first_mesure(4, 4);
+  draw_measure(m1.treble, m1.bass);
+  m1 = first_mesure(4, 4);
+  draw_measure(m1.treble, m1.bass);
   draw_ending_bar();
 });
