@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <title>Sight Reading</title>
+
+  <meta charset="utf-8"/>
+
+  <link rel="stylesheet" href="style/app.css"/>
+
+  <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="lib/vexflow-min.js"></script>
+  <script type="text/javascript" src="lib/feather.min.js"></script>
+</head>
+<body>
+  <noscript>This application can't work without javascript !</noscript>
+  <div id="app">
+    <nav id="navbar-menu" class="navbar">
+      <div class="navicon">
+        <svg class="feather">
+          <use xlink:href="icons/feather-sprite.svg#music"/>
+        </svg>
+      </div>
+      <div class="tab">
+        <div class="tab-item active">
+          <div class="tab-text">
+            Tab 1
+          </div>
+        </div>
+      </div>
+      <div class="tab">
+        <div class="tab-item">
+          <div class="tab-text">
+            Tab 2
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <script type="text/javascript" src="app/page.js"></script>
+  <script type="text/javascript" src="app/music.js"></script>
+
+  <script>
+    feather.replace();
+  </script>
+</body>

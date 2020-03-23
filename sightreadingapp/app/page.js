@@ -1,5 +1,31 @@
-fullscreen = false;
+function next_score() {
 
+}
+
+playing = false;
+function play_score() {
+  if(playing) {
+    $("#pause-btn").hide();
+    $("#play-btn").show();
+  } else {
+    $("#pause-btn").show();
+    $("#play-btn").hide();
+  }
+
+  playing = !playing;
+}
+
+$(function(){
+  $("#maximize-btn").click(toggleFullScreen);
+  $("#minimize-btn").click(toggleFullScreen);
+
+  $("#next-btn").click(next_score);
+
+  $("#pause-btn").click(play_score);
+  $("#play-btn").click(play_score);
+});
+
+fullscreen = false;
 function toggleFullScreen() {
   if(fullscreen) {
     $("#maximize-btn").show();
@@ -33,30 +59,3 @@ function toggleFullScreen() {
     }
   }
 }
-
-function next_score() {
-
-}
-
-playing = false;
-function play_score() {
-  if(playing) {
-    $("#pause-btn").hide();
-    $("#play-btn").show();
-  } else {
-    $("#pause-btn").show();
-    $("#play-btn").hide();
-  }
-
-  playing = !playing;
-}
-
-$(function(){
-  $("#maximize-btn").click(toggleFullScreen);
-  $("#minimize-btn").click(toggleFullScreen);
-
-  $("#next-btn").click(next_score);
-
-  $("#pause-btn").click(play_score);
-  $("#play-btn").click(play_score);
-});

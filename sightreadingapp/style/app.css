@@ -96,6 +96,10 @@ body {
   align-items: center;
 }
 
+#navbar-playing .right .right-box .nav-btn {
+  height: 24px;
+}
+
 #navbar-playing .right>.left-border {
   border-left: 1px solid #e2ebf3;
 }
