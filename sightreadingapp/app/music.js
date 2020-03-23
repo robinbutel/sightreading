@@ -168,13 +168,22 @@ var bnotes = [
   new VF.StaveNote({clef: "bass", keys: ["d/3"], duration: "h"})
 ];
 
-draw_score("score", 2000, 400);
-draw_measure(tnotes, bnotes);
-draw_measure(tnotes, null);
-draw_measure(null, bnotes);
-draw_measure(tnotes, bnotes);
-draw_measure(tnotes, bnotes);
-draw_measure(tnotes, null);
-draw_measure(null, bnotes);
-draw_measure(tnotes, bnotes);
-draw_ending_bar();
+$(function() {
+  window_w = $(window).width();
+  w = window_w/2;
+  if(window_w < 2000) {
+    $("#score").removeClass("center");
+    w = window_w;
+  }
+
+  draw_score("score", 900, 400);
+  draw_measure(tnotes, bnotes);
+  draw_measure(tnotes, null);
+  draw_measure(null, bnotes);
+  draw_measure(tnotes, bnotes);
+  draw_measure(tnotes, bnotes);
+  draw_measure(tnotes, null);
+  draw_measure(null, bnotes);
+  draw_measure(tnotes, bnotes);
+  draw_ending_bar();
+});
