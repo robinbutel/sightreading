@@ -170,25 +170,18 @@ var bnotes = [
 ];
 
 $(function() {
-  window_w = $(window).width();
-  w = window_w/2;
-  if(window_w < 2000) {
-    $("#score").removeClass("center");
-    w = window_w;
-  }
-
-  draw_score("score", 900, 400);
+  draw_score("score", 900, 1000);
   draw_measure(tnotes, bnotes);
   draw_measure(tnotes, null);
   draw_measure(null, bnotes);
   draw_measure(tnotes, bnotes);
-  m1 = first_mesure(4, 4);
+  m1 = get_music("4/4", "cmaj", 4);
   draw_measure(m1.treble, m1.bass);
-  m1 = first_mesure(4, 4);
+  m1 = get_music("4/4", "cmaj", 3);
   draw_measure(m1.treble, m1.bass);
-  m1 = first_mesure(4, 4);
+  m1 = get_music("4/4", "cmaj", 2);
   draw_measure(m1.treble, m1.bass);
-  m1 = first_mesure(4, 4);
+  m1 = get_music("4/4", "cmaj", 0);
   draw_measure(m1.treble, m1.bass);
   draw_ending_bar();
 });
