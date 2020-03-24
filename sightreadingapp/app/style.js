@@ -1,6 +1,18 @@
 $(function(){
   $("#maximize-btn").click(toggleFullScreen);
   $("#minimize-btn").click(toggleFullScreen);
+
+
+  $("#settings-btn").click((event) => { rotate(event.target) });
+
+  $(".settings-item").click((event) => {
+    target = event.target;
+    if(!$(target).hasClass(".settings-item")) {
+      target = $(target).parents('.settings-item')[0];
+    }
+
+    rotate($(target).children(".chevron")[0]);
+  });
 });
 
 fullscreen = false;
@@ -36,4 +48,30 @@ function toggleFullScreen() {
       document.webkitExitFullscreen();
     }
   }
+}
+
+function rotate(target) {
+  if(!$(target).hasClass("rotatable")) {
+    target = $(target).parents('.rotatable')[0];
+  }
+
+  console.log(target);
+  id = target.id;
+  console.log(id);
+
+  var position;
+  if($("#" + id).hasClass("rotated")) {
+    $("#" + id).removeClass("rotated");
+    position = 0;
+  } else {
+    $("#" + id).addClass("rotated");
+    position = 180;
+  }
+
+  $("#" + id).css({'-webkit-transform':'rotate('+position+'deg)',
+    '-moz-transform':'rotate('+position+'deg)',
+    '-o-transform':'rotate('+position+'deg)',
+    '-ms-transform':'rotate('+position+'deg)',
+    'transform':'rotate('+position+'deg)'}
+  );
 }

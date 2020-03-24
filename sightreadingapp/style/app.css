@@ -112,6 +112,41 @@ body {
 }
 
 /*******************************/
+/* Settings */
+
+.settings {
+  position: fixed;
+  top: 60px;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  z-index: 10;
+}
+
+.settings .settings-item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 20px 70px 20px 30px;
+  border-top: 1px solid #e2ebf3;
+  user-select: none;
+}
+
+.settings .settings-item:hover {
+  background-color: #e2ebf3;
+}
+
+.settings .settings-item p {
+  margin-left: 20px;
+  font-weight: 300;
+}
+
+/************/
+
+.rotatable {
+  transition: all 0.5s;
+}
 
 .copyright {
   color: #b6b1ac;

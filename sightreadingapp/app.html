@@ -13,6 +13,28 @@
 </head>
 <body>
   <noscript class="lang lang-noscrit">This application can't work without javascript !</noscript>
+
+  <div class="settings">
+    <div class="settings-item">
+      <svg id="chevron1" class="feather chevron">
+        <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
+      </svg>
+      <p class="lang lang-language">Language</p>
+    </div>
+    <div class="settings-item">
+      <svg id="chevron2" class="feather chevron rotatable">
+        <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
+      </svg>
+      <p class="lang lang-undefined">Autre</p>
+    </div>
+    <div class="settings-item">
+      <svg id="chevron3" class="feather chevron rotatable">
+        <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
+      </svg>
+      <p class="lang lang-undefined">Autre 2</p>
+    </div>
+  </div>
+
   <div id="app">
     <nav id="navbar-playing" class="navbar">
       <div class="navicon">
@@ -39,7 +61,7 @@
           </button>
         </div>
         <div class="right-box left-border">
-          <button id="settings-btn" class="nav-btn">
+          <button id="settings-btn" class="nav-btn rotatable">
             <svg class="feather">
               <use xlink:href="icons/feather-sprite.svg#settings"/>
             </svg>
