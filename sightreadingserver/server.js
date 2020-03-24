@@ -3,7 +3,7 @@ const srv = express();
 const port = 3000;
 
 srv.get('/', (request, response) => {
-  response.send('This is the server<br/><a href=\"app.html\">The app</a>');
+  response.send('This is the server<br/><a href=\"app.html\">The app</a><br/><a href=\"menu.html\">The menu</a>');
 });
 
 srv.use(express.static('../sightreadingapp/'));
