@@ -6,14 +6,51 @@ $(function(){
   $("#settings-btn").click((event) => { rotate(event.target) });
 
   $(".settings-item").click((event) => {
-    target = event.target;
-    if(!$(target).hasClass(".settings-item")) {
-      target = $(target).parents('.settings-item')[0];
+    event.stopPropagation();
+    target = event.currentTarget;
+    if($(target).hasClass("active")) {
+      close_settings_item(target);
+    } else {
+      open_settings_item(target);
     }
+  });
 
-    rotate($(target).children(".chevron")[0]);
+  $(document).click((event) => {
+    if($(event.target).closest(".settings").length == 0) {
+      $(".settings-item").each((i, e) => {
+        close_settings_item(e);
+      });
+    }
   });
 });
+
+function open_settings_item(target) {
+  if($(target).hasClass("active")) {
+    return;
+  }
+
+  $(".settings-item").each((i, e) => {
+    close_settings_item(e);
+  });
+
+  to_open = target.id.split("-")[1];
+  $("#settings-" + to_open).show(200);
+
+  rotate($(target).children(".chevron")[0]);
+  $(target).addClass("active");
+}
+
+function close_settings_item(target) {
+  if(!$(target).hasClass("active")) {
+    return;
+  }
+
+  to_close = target.id.split("-")[1];
+  $("#settings-" + to_close).hide(200);
+
+  rotate($(target).children(".chevron")[0]);
+  $(target).removeClass("active");
+}
 
 fullscreen = false;
 function toggleFullScreen() {
@@ -55,9 +92,7 @@ function rotate(target) {
     target = $(target).parents('.rotatable')[0];
   }
 
-  console.log(target);
   id = target.id;
-  console.log(id);
 
   var position;
   if($("#" + id).hasClass("rotated")) {

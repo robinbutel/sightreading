@@ -119,9 +119,21 @@ body {
   top: 60px;
   right: 0px;
   display: flex;
+  flex-direction: row-reverse;
+  border-top: 1px solid #e2ebf3;
+  z-index: 10;
+}
+
+.settings-menu {
+  display: flex;
   flex-direction: column;
   background-color: #fff;
-  z-index: 10;
+}
+
+#settings-langs {
+  margin-right: 65px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .settings .settings-item {
@@ -133,7 +145,17 @@ body {
   user-select: none;
 }
 
-.settings .settings-item:hover {
+.settings .settings-item.active {
+  background-color: #5562eb;
+  color: #fff;
+  font-weight: normal;
+}
+
+.settings .settings-item.active p {
+  font-weight: normal;
+}
+
+.settings .settings-item:not(.active):hover {
   background-color: #e2ebf3;
 }
 

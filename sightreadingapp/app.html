@@ -15,23 +15,35 @@
   <noscript class="lang lang-noscrit">This application can't work without javascript !</noscript>
 
   <div class="settings">
-    <div class="settings-item">
-      <svg id="chevron1" class="feather chevron">
-        <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
-      </svg>
-      <p class="lang lang-language">Language</p>
+    <div class="settings-menu">
+      <div class="settings-item" id="open-langs">
+        <svg id="chevron1" class="feather chevron rotatable">
+          <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
+        </svg>
+        <p class="lang lang-language">Language</p>
+      </div>
+      <div class="settings-item">
+        <svg id="chevron2" class="feather chevron rotatable">
+          <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
+        </svg>
+        <p class="lang lang-undefined">Autre</p>
+      </div>
+      <div class="settings-item">
+        <svg id="chevron3" class="feather chevron rotatable">
+          <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
+        </svg>
+        <p class="lang lang-undefined">Autre 2</p>
+      </div>
     </div>
-    <div class="settings-item">
-      <svg id="chevron2" class="feather chevron rotatable">
-        <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
-      </svg>
-      <p class="lang lang-undefined">Autre</p>
-    </div>
-    <div class="settings-item">
-      <svg id="chevron3" class="feather chevron rotatable">
-        <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
-      </svg>
-      <p class="lang lang-undefined">Autre 2</p>
+    <div id="settings-langs" style="display: none;">
+      <div class="inputGroup">
+        <input id="radio1" name="radio" type="radio"/>
+        <label for="radio1">Français</label>
+      </div>
+      <div class="inputGroup">
+        <input id="radio2" name="radio" type="radio"/>
+        <label for="radio2">English</label>
+      </div>
     </div>
   </div>
 
@@ -84,28 +96,6 @@
 
     <div id="score" class="center"></div>
     <div class="copyright lang lang-copyright">Sight reading application &#169; Je sais pas qui 2020</div>
-  </div>
-
-
-  <div class="drop">
-    <div class="option active placeholder" data-value="placeholder">
-      Choose wisely
-    </div>
-    <div class="option" data-value="wow">
-      Wow!
-    </div>
-    <div class="option" data-value="drop">
-      So dropdown!
-    </div>
-    <div class="option" data-value="select">
-      Very select!
-    </div>
-    <div class="option" data-value="custom">
-      Much custom!
-    </div>
-    <div class="option" data-value="animation">
-      Such animation!
-    </div>
   </div>
 
   <script type="text/javascript" src="note_generation_src/gamme_base.js"></script>
