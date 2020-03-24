@@ -60,13 +60,13 @@ body {
   justify-content: center;
 }
 
-#navbar-playing .right {
+.navbar .right {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#navbar-playing .right .right-box {
+.navbar .right .right-box {
   margin-right: 20px;
   padding-left: 20px;
   height: 100%;
@@ -74,12 +74,8 @@ body {
   align-items: center;
 }
 
-#navbar-playing .right .right-box .nav-btn {
+.navbar .right .right-box .nav-btn {
   height: 24px;
-}
-
-#navbar-playing .right>.left-border {
-  border-left: 1px solid #e2ebf3;
 }
 
 #navbar-playing .middle .music-btn {
@@ -130,4 +126,8 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
+}
+
+.left-border {
+  border-left: 1px solid #e2ebf3;
 }
