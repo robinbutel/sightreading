@@ -5,13 +5,14 @@
   <meta charset="utf-8"/>
 
   <link rel="stylesheet" href="style/app.css"/>
+  <link rel="stylesheet" href="style/custom-elements.css"/>
 
   <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="lib/vexflow-min.js"></script>
   <script type="text/javascript" src="lib/feather.min.js"></script>
 </head>
 <body>
-  <noscript>This application can't work without javascript !</noscript>
+  <noscript class="lang lang-noscrit">This application can't work without javascript !</noscript>
   <div id="app">
     <nav id="navbar-playing" class="navbar">
       <div class="navicon">
@@ -33,7 +34,7 @@
       </div>
       <div class="right">
         <div class="right-box">
-          <button id="next-btn" class="nav-btn">
+          <button id="next-btn" class="nav-btn lang lang-nextbtn">
             Next
           </button>
         </div>
@@ -60,13 +61,44 @@
     </nav>
 
     <div id="score" class="center"></div>
-    <div class="copyright">Sight reading application &#169; Je sais pas qui 2020</div>
+    <div class="copyright lang lang-copyright">Sight reading application &#169; Je sais pas qui 2020</div>
+  </div>
+
+
+  <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label">
+    <h2 id="bulgy-radios-label">Select an option</h2>
+    <label>
+      <input type="radio" name="options" checked />
+      <span class="radio"></span>
+      <span class="label">First option</span>
+    </label>
+    <label>
+      <input type="radio" name="options" />
+      <span class="radio"></span>
+      <span class="label">Second option</span>
+    </label>
+    <label>
+      <input type="radio" name="options" />
+      <span class="radio"></span>
+      <span class="label">Third option</span>
+    </label>
+    <label>
+      <input type="radio" name="options" />
+      <span class="radio"></span>
+      <span class="label">Fourth option</span>
+    </label>
+    <label>
+      <input type="radio" name="options" />
+      <span class="radio"></span>
+      <span class="label">Last option</span>
+    </label>
   </div>
 
   <script type="text/javascript" src="note_generation_src/gamme_base.js"></script>
   <script type="text/javascript" src="app/music.js"></script>
   <script type="text/javascript" src="app/app.js"></script>
-
+  <script type="text/javascript" src="lang/lang.js"></script>
+  <script type="text/javascript" src="style/custom-elements.js"></script>
   <script>
     feather.replace();
   </script>
