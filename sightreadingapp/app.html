@@ -14,7 +14,7 @@
 <body>
   <noscript class="lang lang-noscrit">This application can't work without javascript !</noscript>
 
-  <div class="settings">
+  <div class="settings" style="display: none;">
     <div class="settings-menu">
       <div class="settings-item" id="open-langs">
         <svg id="chevron1" class="feather chevron rotatable">
@@ -37,12 +37,12 @@
     </div>
     <div id="settings-langs" style="display: none;">
       <div class="inputGroup">
-        <input id="radio1" name="radio" type="radio"/>
-        <label for="radio1">Français</label>
+        <input id="en" name="lang-radio" type="radio" class="lang-radio" checked/>
+        <label for="en">English</label>
       </div>
       <div class="inputGroup">
-        <input id="radio2" name="radio" type="radio"/>
-        <label for="radio2">English</label>
+        <input id="fr" name="lang-radio" type="radio" class="lang-radio"/>
+        <label for="fr">Français</label>
       </div>
     </div>
   </div>

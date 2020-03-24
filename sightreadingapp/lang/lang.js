@@ -1,9 +1,81 @@
 var lang_fr = {
-  nextbtn: "Continuer"
+  nextbtn: "Continuer",
+  noscript: "Nous avons besoin de Javascript pour fonctionner correctement (veuillez installer un naviguateur plus récent)",
+  language: "Langage",
+  instrument: "Instrument",
+  instruments: "Instruments",
+  diffsettings: "Paramètres de difficulté",
+  timesig: "Chiffrage des mesures",
+  scale: "Gamme",
+  piano: "Piano",
+  handind: "Indépendance des mains",
+  nevertogether: "Jamais en même temps",
+  simplehand: "Simple pour une main",
+  bothcomplex: "Compliqué pour les deux mains",
+  largestleap: "Plus grand intervalle",
+  n2nd: "Seconde",
+  n3rd: "Tierce",
+  n4st: "Quarte",
+  n5st: "Quinte",
+  n6st: "Sixte",
+  n7st: "Septième",
+  oct: "Octave",
+  octp: "Octave+",
+  position: "Position",
+  keeppos: "Garder la position initiale",
+  dontkeeppos: "Les mains peuvent quitter la position initiale",
+  stayoct: "Rester dans l'octave initiale",
+  gooutoct: "Possibilité de quitter l'octave initiale",
+  choords: "Accords",
+  none: "Aucun",
+  n2n: "2 notes",
+  n3n: "3 notes",
+  n4n: "4 notes",
+  accidentals: "Altérations",
+  rhythms: "Rythmes",
+  level: "Niveaux",
+  easysetup: "Configuration rapide",
+  advsett: "Paramètres avancés"
 };
 
 var lang_en = {
-  nextbtn: "Next"
+  nextbtn: "Next",
+  noscript: "We can't work without Javascript (please consider using a more recent browser)",
+  language: "Language",
+  instrument: "Instrument",
+  instruments: "Instruments",
+  diffsettings: "Difficulty Settings",
+  timesig: "Time Signature",
+  scale: "Scale",
+  piano: "Piano",
+  handind: "Hand-Independence",
+  nevertogether: "Never together",
+  simplehand: "Simple on one hand",
+  bothcomplex: "Both complexe",
+  largestleap: "Largest leap",
+  n2nd: "2nd",
+  n3rd: "3rd",
+  n4st: "4st",
+  n5st: "5st",
+  n6st: "6st",
+  n7st: "7st",
+  oct: "Octave",
+  octp: "Octave+",
+  position: "Position",
+  keeppos: "Keep initial position",
+  dontkeeppos: "Don't keep initial position",
+  stayoct: "Stay in initial octave",
+  gooutoct: "Possibly of going out of the initial octave",
+  choords: "Choords",
+  none: "None",
+  n2n: "2 notes",
+  n3n: "3 notes",
+  n4n: "4 notes",
+  accidentals: "Accidentals",
+  rhythms: "Rhythms",
+  level: "Levels",
+  easysetup: "Easy Setup",
+  advsett: "Advanced Settings"
 };
 
 var langs = {
@@ -11,7 +83,8 @@ var langs = {
   en: {name: "English", data: lang_en}
 };
 
-var lang = "fr";
+var default_lang = "en";
+var lang = default_lang;
 
 function switch_lang(l) {
   if(langs[l] != null) {
@@ -19,7 +92,11 @@ function switch_lang(l) {
   }
 }
 
-$(function() {
+function refresh_language() {
+  if(langs[lang] == null) {
+    lang = default_lang;
+  }
+
   $(".lang").each(function(i, obj) {
     var all_class = $(obj).attr("class").split(" ");
     var i;
@@ -35,4 +112,47 @@ $(function() {
       }
     }
   });
+}
+
+function get_lang_cookie() {
+  var cookies = document.cookie;
+  if(cookies != "" && cookies.includes("lang")) {
+    cookies.split(";").forEach((c, i) => {
+      if(c.includes("lang")) {
+        lang = c.split("=")[1];
+        $("#" + lang).prop('checked', true);
+        return true;
+      }
+    });
+  }
+  return false;
+}
+
+function set_lang_cookie() {
+  var now = new Date();
+  var days = 7; // Expire in 7 days
+  now.setTime(now.getTime() + (days * 24 * 60 * 60 * 1000));
+  lang_cookie = "lang=" + lang + "; expires=" + now.toUTCString(); + "; path=/";
+  document.cookie = lang_cookie;
+}
+
+$(function() {
+  if(!get_lang_cookie()) {
+    $(".lang-radio").each((i, e) => {
+      if(e.checked) {
+        lang = e.id;
+        refresh_language();
+      }
+    });
+  };
+  refresh_language();
+
+  $(".lang-radio").change(function(event) {
+    if(event.currentTarget.checked) {
+      lang = $(event.currentTarget).attr("id");
+      refresh_language();
+      set_lang_cookie();
+    }
+  });
+
 });
