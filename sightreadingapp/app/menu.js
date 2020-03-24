@@ -87,6 +87,8 @@ $(function () {
     rotate(event.target, 360);
   });
 
+  $("#pick-difficulty #adv-continue-btn").click(next_tab);
+
   $("#navbar-menu #validate-btn").click(validate);
 
   $('#level-slider label').click(function (e) {

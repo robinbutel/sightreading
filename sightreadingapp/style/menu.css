@@ -160,10 +160,29 @@ body {
 
 #pick-difficulty .adv-setup {
   border-left: 1px solid #e2ebf3;
+  border-bottom: 1px solid #e2ebf3;
+  padding-bottom: 30px;
+}
+
+#pick-difficulty .adv-setup #adv-continue-btn {
+  position: relative;
+  float: right;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 5px 5px 0px 5px;
+  border: 2px solid #e2ebf3;
+  cursor: pointer;
+}
+
+#pick-difficulty .adv-setup #adv-continue-btn svg {
+  width: 30px;
+  height: 30px;
 }
 
 #pick-difficulty .easy-setup {
   border-left: 1px solid #e2ebf3;
+  border-bottom: 1px solid #e2ebf3;
+  padding-bottom: 20px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
