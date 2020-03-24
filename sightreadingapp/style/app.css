@@ -37,6 +37,8 @@ body {
   flex-flow: row nowrap;
 
   z-index: 3;
+
+	user-select: none;
 }
 
 .navbar .navicon {

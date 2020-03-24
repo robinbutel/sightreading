@@ -64,7 +64,9 @@ function tab_onclick(event) {
   }
   goto_tab = tabs.indexOf(goto_id);
 
-  tab_goto(goto_tab);
+  if(current_tab != goto_tab) {
+    tab_goto(goto_tab);
+  }
 }
 
 function level_hover(target) {
