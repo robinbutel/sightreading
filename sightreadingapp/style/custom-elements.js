@@ -10,7 +10,13 @@ $(function () {
 
       options.each(function(i) {
           let option = $(this);
-          list.append($('<li />').text(option.text()));
+          var li = $('<li />').text(option.text());
+          option.attr("class").split(" ").forEach((c) => {
+            if(c.includes("lang")) {
+              li.addClass(c);
+            }
+          });
+          list.append(li);
       });
 
       menu.css('--t', select.find(':selected').index() * -41 + 'px');
@@ -56,40 +62,8 @@ $(function () {
   });
 
   $(document).click(e => {
-      e.stopPropagation();
-      if($('.select-menu').has(e.target).length === 0) {
-          $('.select-menu').removeClass('open');
-      }
-  });
-
-  $(".drop .option").click(function() {
-    var val = $(this).attr("data-value"),
-        $drop = $(".drop"),
-        prevActive = $(".drop .option.active").attr("data-value"),
-        options = $(".drop .option").length;
-    $drop.find(".option.active").addClass("mini-hack");
-    $drop.toggleClass("visible");
-    $drop.removeClass("withBG");
-    $(this).css("top");
-    $drop.toggleClass("opacity");
-    $(".mini-hack").removeClass("mini-hack");
-    if ($drop.hasClass("visible")) {
-      setTimeout(function() {
-        $drop.addClass("withBG");
-      }, 400 + options*100);
+    if($('.select-menu').has(e.target).length === 0) {
+      $('.select-menu').removeClass('open');
     }
-    triggerAnimation();
-    if (val !== "placeholder" || prevActive === "placeholder") {
-      $(".drop .option").removeClass("active");
-      $(this).addClass("active");
-    };
   });
-
-  function triggerAnimation() {
-    var finalWidth = $(".drop").hasClass("visible") ? 22 : 20;
-    $(".drop").css("width", "24em");
-    setTimeout(function() {
-      $(".drop").css("width", finalWidth + "em");
-    }, 400);
-  }
 });
