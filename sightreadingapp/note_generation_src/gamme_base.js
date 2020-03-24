@@ -74,10 +74,8 @@ function get_mesure(beats, t, scale, variety)
     return notes;
 }
 
-function get_music(time_signature, scale, variety, independence, position, octave, chords, leap, accidental, nb_mesures)
+function get_music(time_signature, scale, variety) //independence, position, octave, chords, leap, accidental, nb_mesures)
 {
-    var tbeats = time_signature[0];
-    var bbeats = time_signature[0];
     var timedbeats,i;
     for(i=0; i<=variety; i++)
     {
