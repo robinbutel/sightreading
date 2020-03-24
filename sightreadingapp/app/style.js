@@ -1,9 +1,18 @@
-$(function(){
+$(function() {
   $("#maximize-btn").click(toggleFullScreen);
   $("#minimize-btn").click(toggleFullScreen);
 
-
-  $("#settings-btn").click((event) => { rotate(event.target) });
+  settings_open = false;
+  $("#settings-btn").click((event) => {
+    rotate(event.target);
+    $(".settings").toggle();
+    settings_open = !settings_open;
+    if(!settings_open) {
+      $(".settings-item").each((i, e) => {
+        close_settings_item(e);
+      });
+    }
+  });
 
   $(".settings-item").click((event) => {
     event.stopPropagation();
@@ -16,10 +25,11 @@ $(function(){
   });
 
   $(document).click((event) => {
-    if($(event.target).closest(".settings").length == 0) {
+    if($(event.target).closest(".settings").length == 0 && $(event.target).closest("#settings-btn").length == 0) {
       $(".settings-item").each((i, e) => {
         close_settings_item(e);
       });
+      $(".settings").hide();
     }
   });
 });

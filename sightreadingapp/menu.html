@@ -15,7 +15,41 @@
   <script type="text/javascript" src="style/custom-elements.js"></script>
 </head>
 <body>
-  <noscript>This application can't work without javascript !</noscript>
+  <noscript class="lang lang-noscript">This application can't work without javascript !</noscript>
+
+  <div class="settings" style="display: none;">
+    <div class="settings-menu">
+      <div class="settings-item" id="open-langs">
+        <svg id="chevron1" class="feather chevron rotatable">
+          <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
+        </svg>
+        <p class="lang lang-language">Language</p>
+      </div>
+      <div class="settings-item">
+        <svg id="chevron2" class="feather chevron rotatable">
+          <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
+        </svg>
+        <p class="lang lang-undefined">Autre</p>
+      </div>
+      <div class="settings-item">
+        <svg id="chevron3" class="feather chevron rotatable">
+          <use xlink:href="icons/feather-sprite.svg#chevron-left"/>
+        </svg>
+        <p class="lang lang-undefined">Autre 2</p>
+      </div>
+    </div>
+    <div id="settings-langs" style="display: none;">
+      <div class="inputGroup">
+        <input id="en" name="lang-radio" type="radio" class="lang-radio" checked/>
+        <label for="en">English</label>
+      </div>
+      <div class="inputGroup">
+        <input id="fr" name="lang-radio" type="radio" class="lang-radio"/>
+        <label for="fr">Français</label>
+      </div>
+    </div>
+  </div>
+
   <div id="app">
     <nav id="navbar-menu" class="navbar">
       <div class="navicon">
@@ -25,7 +59,7 @@
       </div>
       <div class="tab left-border">
         <div class="tab-item active" id="tab-instrument">
-          <div class="tab-text">
+          <div class="tab-text lang lang-instrument">
             Instrument
           </div>
           <div class="tab-text-right">
@@ -35,7 +69,7 @@
       </div>
       <div class="tab left-border">
         <div class="tab-item" id="tab-difficulty">
-          <div class="tab-text">
+          <div class="tab-text lang lang-diffsettings">
             Difficulty settings
           </div>
           <div class="tab-text-right">
@@ -45,7 +79,7 @@
       </div>
       <div class="tab left-border">
         <div class="tab-item" id="tab-timesig">
-          <div class="tab-text">
+          <div class="tab-text lang lang-timesig">
             Time Signature
           </div>
           <div class="tab-text-right">
@@ -55,14 +89,14 @@
       </div>
       <div class="tab left-border">
         <div class="tab-item" id="tab-scale">
-          <div class="tab-text">
+          <div class="tab-text lang lang-scale">
             Scale
           </div>
         </div>
       </div>
       <div class="right">
         <div class="right-box left-border">
-          <button id="settings-btn" class="nav-btn">
+          <button id="settings-btn" class="nav-btn rotatable">
             <svg class="feather">
               <use xlink:href="icons/feather-sprite.svg#settings"/>
             </svg>
@@ -84,7 +118,7 @@
     </nav>
 
     <div id="pick-instrument" class="pick-menu">
-      <div class="pick-title">
+      <div class="pick-title lang lang-instruments">
         Instruments
       </div>
       <div class="pick-list">
@@ -92,68 +126,96 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="102" height="105" viewBox="0 0 102 105" class="icon">
             <path d="M68.7153077,0.992378049 L66.4464615,0.992378049 L35.5535385,0.992378049 L33.2846923,0.992378049 L0.121615385,0.992378049 L0.121615385,104.014024 L33.2833846,104.014024 L35.5522308,104.014024 L66.4451538,104.014024 L68.714,104.014024 L101.875769,104.014024 L101.875769,0.992378049 L68.7153077,0.992378049 Z M33.2846923,100.605366 L3.60138462,100.605366 L3.60138462,4.40103659 L24.0746154,4.40103659 L24.0746154,61.9013415 L33.2833846,61.9013415 L33.2833846,100.605366 L33.2846923,100.605366 Z M66.4464615,100.605366 L36.7605385,100.605366 L36.7605385,61.9013415 L44.761,61.9013415 L44.761,4.40103659 L57.2376923,4.40103659 L57.2376923,61.9013415 L66.4464615,61.9013415 L66.4464615,100.605366 Z M98.3973077,100.605366 L69.9693846,100.605366 L69.9693846,61.9013415 L77.9227692,61.9013415 L77.9227692,4.40103659 L98.396,4.40103659 L98.396,100.605366 L98.3973077,100.605366 Z"/>
           </svg>
-          <p>Piano</p>
+          <p class="lang lang-piano">Piano</p>
         </div>
       </div>
     </div>
 
     <div id="pick-difficulty" class="pick-menu" style="display: none;">
       <div class="difficulty-menu">
-        <div class="pick-title">
+        <div class="pick-title lang lang-diffsettings">
           Difficulty settings
         </div>
-        <div class="hand-independence pick-submenu"><p>Hand Independence</p>
-          <select data-menu>
-            <option selected>Never Play together</option>
-            <option>Simple on one hand</option>
-            <option>Both complex</option>
-          </select>
+        <div class="inputGroup">
+          <input id="easy" name="dffsett" type="radio" class="diffsett" data-menu="easy-setup" checked/>
+          <label for="easy" class="lang lang-easysetup">Easy setup</label>
         </div>
-        <div class="leap pick-submenu"><p>Largest Leap</p>
-          <select data-menu>
-            <option selected>2nd</option>
-            <option>3rd</option>
-            <option>4st</option>
-            <option>5st</option>
-            <option>6st</option>
-            <option>7st</option>
-            <option>Octave</option>
-            <option>Octave+</option>
-          </select>
+        <div class="easy-setup diffmenu">
+          <p><span class="lang lang-level">Level</span></p>
+          <div id="level-slider">
+            <input type="radio" name="level-slider" class="level-item" id="1" value="1">
+            <label for="1" data-level-nb="1"></label>
+            <input type="radio" name="level-slider" class="level-item" id="2" value="2">
+            <label for="2" data-level-nb="2"></label>
+            <input type="radio" name="level-slider" class="level-item" id="3" value="3">
+            <label for="3" data-level-nb="3"></label>
+            <input type="radio" name="level-slider" class="level-item" id="4" value="4">
+            <label for="4" data-level-nb="4"></label>
+            <input type="radio" name="level-slider" class="level-item" id="5" value="5">
+            <label for="5" data-level-nb="5"></label>
+            <div id="level-pos"></div>
+          </div>
         </div>
-        <div class="pick-submenu"><p>Position</p>
-          <select data-menu>
-            <option selected>Keep starting hand position</option>
-            <option>Don't keep starting hand position</option>
-          </select>
+
+        <div class="inputGroup adv-menu">
+          <input id="adv" name="dffsett" type="radio" class="diffsett" data-menu="adv-setup"/>
+          <label for="adv" class="lang lang-advsett">Advanced Settings</label>
         </div>
-        <div class="pick-submenu"><p>Octave</p>
-          <select data-menu>
-            <option selected>Stay in octave</option>
-            <option>Possibly go out of octave</option>
-          </select>
-        </div>
-        <div class="pick-submenu"><p>Choords</p>
-          <select data-menu>
-            <option selected>None</option>
-            <option>2 notes</option>
-            <option>3 notes</option>
-            <option>4 notes</option>
-          </select>
-        </div>
-        <div class="pick-submenu submenu-text">
-          <input id="c1" type="checkbox">
-          <label for="c1">Accidentals</label>
+        <div class="adv-setup diffmenu" style="display: none;">
+          <div class="hand-independence pick-submenu"><p class="lang lang-handind">Hand Independence</p>
+            <select data-menu>
+              <option class="lang lang-nevertogether" selected>Never Play together</option>
+              <option class="lang lang-simplehand" >Simple on one hand</option>
+              <option class="lang lang-bothcomplex" >Both complex</option>
+            </select>
+          </div>
+          <div class="leap pick-submenu"><p class="lang lang-largestleap">Largest Leap</p>
+            <select data-menu>
+              <option class="lang lang-n2nd" selected>2nd</option>
+              <option class="lang lang-n3rd">3rd</option>
+              <option class="lang lang-n4st">4st</option>
+              <option class="lang lang-n5st">5st</option>
+              <option class="lang lang-n6st">6st</option>
+              <option class="lang lang-n7st">7st</option>
+              <option class="lang lang-oct">Octave</option>
+              <option class="lang lang-octp">Octave+</option>
+            </select>
+          </div>
+          <div class="pick-submenu"><p class="lang lang-position">Position</p>
+            <select data-menu>
+              <option class="lang lang-keeppos" selected>Keep starting hand position</option>
+              <option class="lang lang-dontkeeppos">Don't keep starting hand position</option>
+            </select>
+          </div>
+          <div class="pick-submenu"><p class="lang lang-oct">Octave</p>
+            <select data-menu>
+              <option class="lang lang-stayoct" selected>Stay in octave</option>
+              <option class="lang lang-gooutoct">Possibly go out of octave</option>
+            </select>
+          </div>
+          <div class="pick-submenu"><p class="lang lang-choords">Choords</p>
+            <select data-menu>
+              <option class="lang lang-none" selected>None</option>
+              <option class="lang lang-n2n">2 notes</option>
+              <option class="lang lang-n3n">3 notes</option>
+              <option class="lang lang-n4n">4 notes</option>
+            </select>
+          </div>
+          <div class="pick-submenu submenu-text">
+            <input id="c1" type="checkbox">
+            <label for="c1" class="lang lang-accidentals">Accidentals</label>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="level-description">
-    <div class="rhythms"><div class="description-title">Rhythms :</div></div>
-    <div class="leap"><div class="description-title">Largest Leap :</div><div class="description-text">5st</div></div>
+    <div class="rhythms"><div class="description-title"><span class="lang lang-rhythms">Rhythms</span> :</div><p class="rhythms-text"></p></div>
+    <div class="leap"><div class="description-title"><span class="lang lang-largestleap">Largest Leap<span> :</div><div class="description-text">5st</div></div>
   </div>
 
+  <script type="text/javascript" src="lang/lang.js"></script>
   <script type="text/javascript" src="app/style.js"></script>
   <script type="text/javascript" src="app/menu.js"></script>
 
