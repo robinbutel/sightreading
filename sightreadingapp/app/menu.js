@@ -5,7 +5,7 @@ scale = "C Major";
 
 tabs = ["instrument", "difficulty", "timesig", "scale"];
 
-current_tab = 0;
+current_tab = -1;
 
 levels = {
   1: {rhythms : "not very much"},
@@ -28,36 +28,33 @@ function pick_level(event) {
 }
 
 function next_tab() {
-  if(current_tab == (tabs.length-1)) {
-    validate();
-  }
-
-  current_tab += 1;
-
-  $("#tab-" + tabs[current_tab]).addClass("active");
-  if(current_tab > 0) {
-    $("#tab-" + tabs[current_tab-1]).removeClass("active");
-  }
-
-  $("#pick-" + tabs[current_tab]).show();
-  if(current_tab > 0) {
-    $("#pick-" + tabs[current_tab-1]).hide();
-  }
+  tab_goto(current_tab+1);
 }
 
 function validate() {
-  alert("validate");
+  alert("validating...");
 }
 
 function tab_goto(goto_tab) {
-  last_tab = current_tab;
+  if(current_tab != -1) {
+    last_tab = current_tab;
+  }
   current_tab = goto_tab;
 
-  $("#tab-" + tabs[current_tab]).addClass("active");
-  $("#tab-" + tabs[last_tab]).removeClass("active");
+  if(current_tab == (tabs.length-1)) {
+    $(".continue-container").hide(100);
+    $(".validate-container").show(100);
+  }
 
-  $("#pick-" + tabs[current_tab]).show();
-  $("#pick-" + tabs[last_tab]).hide();
+  $("#tab-" + tabs[current_tab]).addClass("active");
+  if(current_tab != -1) {
+    $("#tab-" + tabs[last_tab]).removeClass("active");
+  }
+
+  $("#pick-" + tabs[current_tab]).show(200);
+  if(current_tab != -1) {
+    $("#pick-" + tabs[last_tab]).hide(200);
+  }
 }
 
 function tab_onclick(event) {
@@ -85,6 +82,17 @@ $(function () {
 
   $("#navbar-menu .tab-item").click(tab_onclick);
 
+  $("#navbar-menu #continue-btn").click(next_tab);
+  $("#navbar-menu #continue-btn").click((event) => {
+    rotate(event.target, 360);
+  });
+
+  $("#navbar-menu #validate-btn").click(validate);
+
+  $('#level-slider label').click(function (e) {
+    next_tab();
+  });
+
   $('#level-slider label').bind("mouseenter", function (e) {
     level_hover(e.currentTarget);
   });
@@ -108,5 +116,5 @@ $(function () {
     }
   });
 
-  tab_goto(1);
+  tab_goto(0);
 });

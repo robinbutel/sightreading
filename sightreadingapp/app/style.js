@@ -97,7 +97,7 @@ function toggleFullScreen() {
   }
 }
 
-function rotate(target) {
+function rotate(target, deg=180) {
   if(!$(target).hasClass("rotatable")) {
     target = $(target).parents('.rotatable')[0];
   }
@@ -110,7 +110,7 @@ function rotate(target) {
     position = 0;
   } else {
     $("#" + id).addClass("rotated");
-    position = 180;
+    position = deg;
   }
 
   $("#" + id).css({'-webkit-transform':'rotate('+position+'deg)',
