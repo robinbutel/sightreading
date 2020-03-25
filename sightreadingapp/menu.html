@@ -78,19 +78,12 @@
         </div>
       </div>
       <div class="tab left-border">
-        <div class="tab-item" id="tab-timesig">
-          <div class="tab-text lang lang-timesig">
-            Time Signature
+        <div class="tab-item" id="tab-timesigscale">
+          <div class="tab-text">
+            <span class="lang lang-timesig">Time Signature</span> / <span class="lang lang-scale">Scale</span>
           </div>
           <div class="tab-text-right">
 
-          </div>
-        </div>
-      </div>
-      <div class="tab left-border">
-        <div class="tab-item" id="tab-scale">
-          <div class="tab-text lang lang-scale">
-            Scale
           </div>
         </div>
       </div>
@@ -215,7 +208,7 @@
               <option class="lang lang-n4n">4 notes</option>
             </select>
           </div>
-          <div class="pick-submenu submenu-text">
+          <div class="pick-submenu submenu-text checkbox-cont">
             <input id="c1" type="checkbox">
             <label for="c1" class="lang lang-accidentals">Accidentals</label>
           </div>
@@ -225,6 +218,168 @@
               <use xlink:href="icons/feather-sprite.svg#arrow-right-circle"/>
             </svg>
           </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="pick-timesigscale" class="pick-menu" style="display: none;">
+      <p class="pick-title"><span class="lang lang-timesig">Time signature</span></p>
+      <div id="timesig-picker" class="array-picker">
+        <div class="array-picker-container">
+          <input id="ts44" name="timesig-checkbox" type="checkbox" class="timesig-radio" checked/>
+          <label for="ts44" class="item">4/4</label>
+        </div>
+        <div class="array-picker-container">
+          <input id="ts34" name="timesig-checkbox" type="checkbox" class="timesig-radio"/>
+          <label for="ts34" class="item">3/4</label>
+        </div>
+        <div class="array-picker-container">
+          <input id="ts54" name="timesig-checkbox" type="checkbox" class="timesig-radio"/>
+          <label for="ts54" class="item">5/4</label>
+        </div>
+        <div class="array-picker-container">
+          <input id="ts22" name="timesig-checkbox" type="checkbox" class="timesig-radio"/>
+          <label for="ts22" class="item">2/2</label>
+        </div>
+        <div class="array-picker-container">
+          <input id="ts68" name="timesig-checkbox" type="checkbox" class="timesig-radio"/>
+          <label for="ts68" class="item">6/8</label>
+        </div>
+        <div class="array-picker-container">
+          <input id="ts98" name="timesig-checkbox" type="checkbox" class="timesig-radio"/>
+          <label for="ts98" class="item">9/8</label>
+        </div>
+      </div>
+      <p class="pick-title"><span class="lang lang-scale">Scale</span></p>
+      <div id="scale-picker" class="scale-container">
+        <p class="category-title lang lang-suggested">Suggested</span>
+        <div class="scale-category array-picker">
+          <div class="array-picker-container">
+            <input id="cmaj" name="scale-checkbox" type="checkbox" class="timesig-radio" checked/>
+            <label for="cmaj" class="item lang lang-cmaj">C Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="fmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="fmaj" class="item lang lang-fmaj">F Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="gmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="gmaj" class="item lang lang-gmaj">G Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="dmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="dmaj" class="item lang lang-dmaj">D Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="amaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="amaj" class="item lang lang-amaj">A Major</label>
+          </div>
+        </div>
+        <p class="category-title lang lang-major">Major</span>
+        <div class="scale-category array-picker major">
+          <div class="array-picker-container">
+            <input id="emaj" name="scale-checkbox" type="checkbox" class="timesig-radio" checked/>
+            <label for="emaj" class="item">E Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="bmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="bmaj" class="item lang lang-bmaj">B Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="fdmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="fdmaj" class="item lang lang-fdmaj">F# Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="cdmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="cdmaj" class="item lang lang-cdmaj">C# Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="bbmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="bbmaj" class="item lang lang-bbmaj">Bb Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="ebmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="ebmaj" class="item lang lang-ebmaj">Eb Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="abmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="abmaj" class="item lang lang-abmaj">Ab Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="dbmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="dbmaj" class="item lang lang-dbmaj">Db Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="gbmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="gbmaj" class="item lang lang-gbmaj">Gb Major</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="cbmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="cbmaj" class="item lang lang-cbmaj">Cb Major</label>
+          </div>
+        </div>
+        <p class="category-title lang lang-minor">Minor</span>
+        <div class="scale-category array-picker">
+          <div class="array-picker-container">
+            <input id="amin" name="scale-checkbox" type="checkbox" class="timesig-radio" checked/>
+            <label for="amin" class="item lang lang-amin">A Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="emin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="emin" class="item lang lang-emin">E Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="bmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="bmin" class="item lang lang-bmin">B Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="fdmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="fdmin" class="item lang lang-fdmin">F# Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="cdmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="cdmin" class="item lang lang-cdmin">C# Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="gdmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="gdmin" class="item lang lang-gdmin">G# Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="ddmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="ddmin" class="item lang lang-ddmin">D# Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="admin" name="scale-checkbox" type="checkbox" class="timesig-radio" checked/>
+            <label for="admin" class="item lang lang-admin">A# Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="dmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="dmin" class="item lang lang-dmin">D Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="gmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="gmin" class="item lang lang-gmin">G Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="cmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="cmin" class="item lang lang-cmin">C Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="fmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="fmin" class="item lang lang-fmin">F Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="bbmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="bbmin" class="item lang lang-bbmin">Bb Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="ebmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="ebmin" class="item lang lang-ebmin">Eb Minor</label>
+          </div>
+          <div class="array-picker-container">
+            <input id="abmin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
+            <label for="abmin" class="item lang lang-abmin">Ab Minor</label>
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ level = 0;
 timesig = "4/4";
 scale = "C Major";
 
-tabs = ["instrument", "difficulty", "timesig", "scale"];
+tabs = ["instrument", "difficulty", "timesigscale"];
 
 current_tab = -1;
 
@@ -58,10 +58,7 @@ function tab_goto(goto_tab) {
 }
 
 function tab_onclick(event) {
-  goto_id = event.target.id.split("-")[1];
-  if (goto_id == null) {
-      goto_id = event.target.parentElement.id.split("-")[1];
-  }
+  goto_id = event.currentTarget.id.split("-")[1];
   goto_tab = tabs.indexOf(goto_id);
 
   if(current_tab != goto_tab) {

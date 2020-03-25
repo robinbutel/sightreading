@@ -59,6 +59,20 @@ body {
   max-width: 800px;
 }
 
+.pick-menu {
+  max-width: 800px;
+}
+
+@media screen and (max-width: 1000px) {
+  .pick-menu {
+    max-width: 70%;
+    margin-left: 20px;
+  }
+  #app {
+    align-items: flex-start;
+  }
+}
+
 .pick-menu .pick-submenu {
   margin: 20px 10px 20px 50px;
   display: flex;
@@ -208,6 +222,66 @@ body {
   font-size: 18px;
 }
 
+.array-picker {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.array-picker .array-picker-container {
+  margin: 20px 0px 30px 0px;
+}
+
+.array-picker .item {
+  padding: 15px 30px 15px 30px;
+  margin-top: 20px;
+  text-align: center;
+  margin-left: 5px;
+  background-color: #f0eff3;
+  transition: all 200ms linear;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  color: #5f616b;
+}
+
+.array-picker .item:hover {
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.array-picker input:checked ~ label {
+  background-color: #87A7FF;
+  color: #fff;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.array-picker input[type="checkbox"] {
+  visibility: hidden;
+  width: 0px;
+}
+
+.scale-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.scale-container .array-picker-container {
+
+}
+
+.scale-container .category-title {
+  margin: 20px 0px 30px 30px;
+}
+
+.scale-container .array-picker {
+  margin-bottom: 50px;
+}
+
+#timesig-picker {
+  margin-bottom: 50px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid #e2ebf3;
+}
+
 .difficulty-menu {
   width: 70%;
   max-width: 70%;
@@ -218,7 +292,7 @@ body {
   right: 0;
   top: 0;
   background-color: #fff;
-  min-height: 100%;
+  height: 100%;
   min-width: 20%;
 
   padding: 100px 20px 0px 30px;
