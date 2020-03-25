@@ -181,7 +181,7 @@ $(function() {
   draw_measure(m1.treble, m1.bass);
   m1 = get_music("4/4", "cmaj", 2);
   draw_measure(m1.treble, m1.bass);
-  m1 = get_music("4/4", "cmaj", 0);
+  m1 = get_music("4/4", "cmaj", 1);
   draw_measure(m1.treble, m1.bass);
   draw_ending_bar();
 });
