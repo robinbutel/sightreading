@@ -50,6 +50,8 @@
     </div>
   </div>
 
+  <p class="bubble" id="missing-p" style="display: none;">Missing parameter</p>
+
   <div id="app">
     <nav id="navbar-menu" class="navbar">
       <div class="navicon">
@@ -62,7 +64,7 @@
           <div class="tab-text lang lang-instrument">
             Instrument
           </div>
-          <div class="tab-text-right">
+          <div class="tab-text-right" id="tab-instrument-text">
 
           </div>
         </div>
@@ -72,7 +74,7 @@
           <div class="tab-text lang lang-diffsettings">
             Difficulty settings
           </div>
-          <div class="tab-text-right">
+          <div class="tab-text-right" id="tab-rhythm-text">
 
           </div>
         </div>
@@ -185,14 +187,14 @@
               <option class="lang lang-bothcomplex" >Both complex</option>
             </select>
           </div>
-          <div class="leap pick-submenu"><p class="lang lang-largestleap">Largest Leap</p>
+          <div class="leap pick-submenu"><p class="lang lang-largestint">Largest Interval</p>
             <select data-menu>
               <option class="lang lang-n2nd" selected>2nd</option>
               <option class="lang lang-n3rd">3rd</option>
-              <option class="lang lang-n4st">4st</option>
-              <option class="lang lang-n5st">5st</option>
-              <option class="lang lang-n6st">6st</option>
-              <option class="lang lang-n7st">7st</option>
+              <option class="lang lang-n4th">4th</option>
+              <option class="lang lang-n5th">5th</option>
+              <option class="lang lang-n6th">6th</option>
+              <option class="lang lang-n7th">7th</option>
               <option class="lang lang-oct">Octave</option>
               <option class="lang lang-octp">Octave+</option>
             </select>
@@ -397,8 +399,13 @@
   </div>
 
   <div class="level-description">
-    <div class="rhythms"><div class="description-title"><span class="lang lang-rhythms">Rhythms</span> :</div><p class="rhythms-text"></p></div>
-    <div class="leap"><div class="description-title"><span class="lang lang-largestleap">Largest Leap<span> :</div><div class="description-text">5st</div></div>
+    <div class="des-rhythms"><div class="description-title"><span class="lang lang-variety">Rhythms</span> :</div><p class="rhythms-text"></p></div>
+    <div class="des-handind"><div class="description-title"><span class="lang lang-handind">hand independence</span> :</div><p class="handind-text"></p></div>
+    <div class="des-leap"><div class="description-title"><span class="lang lang-largestint">Largest Interval</span> :</div>
+      <div class="description-text">5st</div>
+    </div>
+    <div class="des-position"><div class="description-title"><span class="lang lang-position">position</span> :</div><p class="position-text"></p></div>
+    <div class="des-octave"><div class="description-title"><span class="lang lang-position">position</span> :</div><p class="position-text"></p></div>
   </div>
 
   <script type="text/javascript" src="lang/lang.js"></script>

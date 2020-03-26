@@ -43,6 +43,7 @@ body {
   font-weight: 200;
   color: #5f616b;
   margin-right: 20px;
+  white-space: nowrap;
 }
 
 #navbar-menu .tab .active {
@@ -351,4 +352,34 @@ body {
     transform: scale(2);
     opacity: 0;
   }
+}
+
+/* Speech bubble */
+p.bubble {
+  position: fixed;
+  top: 72px;
+  left: 1000px;
+  background-color: #26272b;
+  color: #9fa2a7;
+  padding: 10px 20px 10px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3), 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  user-select: none;
+  white-space: nowrap;
+}
+
+p.bubble::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 100%;
+  left: 130px;
+  border: .5rem solid transparent;
+  border-top: none;
+  border-bottom-color: #26272b;
+  -webkit-filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, 0.1));
+          filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, 0.1));
 }
