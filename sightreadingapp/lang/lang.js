@@ -1,4 +1,6 @@
 var lang_fr = {
+  yes: "Oui",
+  no: "Non",
   nextbtn: "Continuer",
   noscript: "Nous avons besoin de Javascript pour fonctionner correctement (veuillez installer un naviguateur plus récent)",
   language: "Langage",
@@ -33,6 +35,12 @@ var lang_fr = {
   n4n: "4 notes",
   accidentals: "Altérations",
   rhythms: "Rythmes",
+  variety: "Rythmes possibles",
+  onlywhites: "Rondes seulement",
+  halfsover: "Blanches ou plus",
+  quartersover: "Noires ou plus",
+  eightsover: "Croches ou plus",
+  sixteenthsover: "Double-croches ou plus",
   level: "Niveaux",
   easysetup: "Configuration rapide",
   advsett: "Paramètres avancés",
@@ -73,6 +81,8 @@ var lang_fr = {
 };
 
 var lang_en = {
+  yes: "Yes",
+  no: "No",
   nextbtn: "Next",
   noscript: "We can't work without Javascript (please consider using a more recent browser)",
   language: "Language",
@@ -107,6 +117,12 @@ var lang_en = {
   n4n: "4 notes",
   accidentals: "Accidentals",
   rhythms: "Rhythms",
+  variety: "Rhythm variety",
+  onlywhites: "Only whites",
+  halfsover: "Halfs and over",
+  quartersover: "Quarters and over",
+  eightsover: "Eights and over",
+  sixteenthsover: "Sixteenths and over",
   level: "Levels",
   easysetup: "Easy Setup",
   advsett: "Advanced Settings",
@@ -173,7 +189,7 @@ function refresh_language() {
       if(c.includes("lang-")) {
         lname = c.split("-")[1];
         l = langs[lang].data[lname];
-        if(l != null) {
+        if(l != null && $(obj).html() != l) {
           $(obj).html(l);
           return;
         }

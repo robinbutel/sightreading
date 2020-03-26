@@ -74,6 +74,12 @@ body {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .level-description {
+    display: none;
+  }
+}
+
 .pick-menu .pick-submenu {
   margin: 20px 10px 20px 50px;
   display: flex;
@@ -311,7 +317,7 @@ body {
   background-color: #fff;
   height: 100%;
   min-width: 20%;
-
+  overflow: auto;
   padding: 100px 20px 0px 30px;
 }
 
@@ -321,15 +327,24 @@ body {
   margin-top: 20px;
 }
 
-.level-description .leap .description-text {
+.level-description .description-text {
   font-weight: 400;
   font-size: 20px;
   margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.level-description p {
+  font-weight: 400;
+  color: #000;
+  font-size: 15px;
+  margin-left: 10px;
 }
 
 .level-description .description-title {
   font-weight: 300;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 .ripple {

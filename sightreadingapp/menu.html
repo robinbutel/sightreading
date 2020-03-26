@@ -171,7 +171,7 @@
           <label for="adv" class="lang lang-advsett">Advanced Settings</label>
         </div>
         <div class="adv-setup diffmenu" style="display: none;">
-          <div class="rhythm-variety pick-submenu"><p class="lang lang-variety">Rhythm Variety</p>
+          <div class="variety pick-submenu"><p class="lang lang-variety">Rhythm Variety</p>
             <select data-menu>
               <option class="lang lang-onlywhites" selected>Only whites</option>
               <option class="lang lang-halfsover" >Halfs and over</option>
@@ -180,7 +180,7 @@
               <option class="lang lang-sixteenthsover" >Sixteenths and over</option>
             </select>
           </div>
-          <div class="hand-independence pick-submenu"><p class="lang lang-handind">Hand Independence</p>
+          <div class="independence pick-submenu"><p class="lang lang-handind">Hand Independence</p>
             <select data-menu>
               <option class="lang lang-nevertogether" selected>Never Play together</option>
               <option class="lang lang-simplehand" >Simple on one hand</option>
@@ -398,16 +398,27 @@
     </div>
   </div>
 
-  <div class="level-description">
-    <div class="des-rhythms"><div class="description-title"><span class="lang lang-variety">Rhythms</span> :</div><p class="rhythms-text"></p></div>
-    <div class="des-handind"><div class="description-title"><span class="lang lang-handind">hand independence</span> :</div><p class="handind-text"></p></div>
+  <div class="level-description" style="display: none;">
+    <div class="des-rhythms"><div class="description-title"><span class="lang lang-variety">Rhythms</span> :</div><p class="variety-text"></p></div>
+    <div class="des-handind"><div class="description-title"><span class="lang lang-handind">hand independence</span> :</div><p class="independence-text"></p></div>
     <div class="des-leap"><div class="description-title"><span class="lang lang-largestint">Largest Interval</span> :</div>
-      <div class="description-text">5st</div>
+      <div class="description-text leap-text">5st</div>
     </div>
-    <div class="des-position"><div class="description-title"><span class="lang lang-position">position</span> :</div><p class="position-text"></p></div>
-    <div class="des-octave"><div class="description-title"><span class="lang lang-position">position</span> :</div><p class="position-text"></p></div>
+    <div class="des-position"><div class="description-title"><span class="lang lang-position">position</span> :</div>
+      <p class="position-text lang lang-keeppos"></p>
+    </div>
+    <div class="des-octave"><div class="description-title"><span class="lang lang-octave">octave</span> :</div>
+      <p class="octave-text"></p>
+    </div>
+    <div class="des-chords"><div class="description-title"><span class="lang lang-chords">octave</span> :</div>
+      <p class="chords-text"></p>
+    </div>
+    <div class="des-accidentals"><div class="description-title"><span class="lang lang-accidentals">accidentals</span> :</div>
+      <p class="accidentals-text"></p>
+    </div>
   </div>
 
+  <script type="text/javascript" src="app/levels.js"></script>
   <script type="text/javascript" src="lang/lang.js"></script>
   <script type="text/javascript" src="app/style.js"></script>
   <script type="text/javascript" src="app/menu.js"></script>

@@ -1,4 +1,6 @@
 lang_xx = {
+  yes: "",
+  no: "",
   nextbtn: "",
   noscript: "",
   language: "",

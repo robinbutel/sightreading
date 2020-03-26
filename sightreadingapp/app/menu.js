@@ -1,6 +1,4 @@
 var instrument = "";
-var timesig = "";
-var scale = "";
 
 function validate() {
   console.log("validating");
@@ -26,8 +24,8 @@ function validate() {
   if($("#easy").prop("checked")) {
     // Easy Setup
     console.log("easy setup");
-    level_checked = $(".easy-setup .level-item:checked");
-    level = level_checked.attr("id");
+    var level_checked = $(".easy-setup .level-item:checked");
+    var level = level_checked.attr("id");
     if(level == null) {
       goto_needed_tab(1);
       return;
@@ -36,11 +34,12 @@ function validate() {
   } else {
     // Advanced Setup
     console.log("advanced setup");
-    rhythm_options.variety = $(".rhythm-variety select")[0].selectedIndex;
-    rhythm_options.independence = $(".hand-independence select")[0].selectedIndex;
+    rhythm_options.variety = $(".variety select")[0].selectedIndex;
+    rhythm_options.independence = $(".independence select")[0].selectedIndex;
     rhythm_options.position = $(".position select")[0].selectedIndex;
     rhythm_options.octave = $(".octave select")[0].selectedIndex;
-    rhythm_options.chords = $(".chords select")[0].selectedIndex;
+    var index = $(".chords select")[0].selectedIndex;
+    rhythm_options.chords = index != 0 ? index+1 : 0;
     rhythm_options.leap = $(".leap select")[0].selectedIndex + 2;
     rhythm_options.accidentals = $(".accidentals input").prop("checked") ? 1 : 0;
 
@@ -48,7 +47,7 @@ function validate() {
   }
 
   /* time signature */
-  possible_sig = [];
+  var possible_sig = [];
   $("#timesig-picker input:checked").each(function(i, e) {
     possible_sig.push(e.id[2] + "/" + e.id[3]);
   });
@@ -59,7 +58,7 @@ function validate() {
   console.log("possible time signatures : " + possible_sig);
 
   /* scale */
-  possible_scale = [];
+  var possible_scale = [];
   $("#scale-picker input:checked").each(function(i, e) {
     possible_scale.push(e.id);
   });
@@ -79,12 +78,74 @@ var tabs = ["instrument", "difficulty", "timesigscale"];
 
 var current_tab = -1;
 
-var levels = {
-  1: {rhythms : "not very much"},
-  2: {rhythms : "a little bit"},
-  3: {rhythms : "a bit more"},
-  4: {rhythms : "a lot"},
-  5: {rhythms : "extremly HARD"}
+function refresh_options() {
+  var rhythm_options = {
+    variety: 0,
+    independence: 0,
+    position: 0,
+    octave: 0,
+    chords: 0,
+    leap: 2,
+    accidentals: 0
+  }
+
+  if($("#easy").prop("checked")) {
+    // Easy Setup
+    var level_checked = $(".easy-setup .level-item:checked");
+    var level = level_checked.attr("id");
+    if(level == null) {
+      return;
+    }
+
+    rhythm_options = get_levels()[parseInt(level)];
+    if(rhythm_options == null) return;
+  } else {
+    // Advanced Setup
+    rhythm_options.variety = $(".variety select")[0].selectedIndex;
+    rhythm_options.independence = $(".independence select")[0].selectedIndex;
+    rhythm_options.position = $(".position select")[0].selectedIndex;
+    rhythm_options.octave = $(".octave select")[0].selectedIndex;
+    var index = $(".chords select")[0].selectedIndex;
+    rhythm_options.chords = index != 0 ? index+1 : 0;
+    rhythm_options.leap = $(".leap select")[0].selectedIndex + 2;
+    rhythm_options.accidentals = $(".accidentals input").prop("checked") ? 1 : 0;
+  }
+
+  /* time signature */
+  var possible_sig = [];
+  $("#timesig-picker input:checked").each(function(i, e) {
+    possible_sig.push(e.id[2] + "/" + e.id[3]);
+  });
+
+  /* scale */
+  var possible_scale = [];
+  $("#scale-picker input:checked").each(function(i, e) {
+    possible_scale.push(e.id);
+  });
+
+  draw_options(rhythm_options, null, null);
+}
+
+function draw_options(rhythm_options, possible_sig, possible_scale) {
+  var text;
+  var options;
+  var index;
+
+  for(var key in rhythm_options) {
+    if(key == "accidentals") {
+      $("." + key + "-text").html(rhythm_options.accidentals ? "<span class=\"lang lang-yes\">oui</span>" : "<span class=\"lang lang-no\">non</span>");
+      refresh_language();
+    } else {
+      index = rhythm_options[key];
+      if(key == "leap") {
+        index -= 2;
+      } else if(key == "chords" && index != 0) {
+        index -= 1;
+      }
+      text = $("." + key + " option")[index].innerHTML;
+      $("." + key + "-text").html(text);
+    }
+  }
 }
 
 function pick_instrument(event) {
@@ -102,6 +163,7 @@ function pick_instrument(event) {
 function pick_level(event) {
   level = $(".easy-setup .level-item:checked").attr("id");
   $("#tab-rhythm-text").html("level " + level);
+  refresh_options();
   next_tab();
 }
 
@@ -139,7 +201,6 @@ function tab_goto(goto_tab) {
     $(".continue-container").hide(100);
     $(".validate-container").show(100);
   }
-  console.log(current_tab);
 
   $("#tab-" + tabs[current_tab]).addClass("active");
   if(last_tab != -1) {
@@ -149,6 +210,13 @@ function tab_goto(goto_tab) {
   $("#pick-" + tabs[current_tab]).show(200);
   if(last_tab != -1) {
     $("#pick-" + tabs[last_tab]).hide(200);
+  }
+
+  if(current_tab == 0) {
+    $(".level-description").hide();
+  } else if($(window).width()>600) {
+    $(".level-description").show();
+    refresh_options();
   }
 }
 
@@ -163,11 +231,11 @@ function tab_onclick(event) {
 
 function level_hover(target) {
   lvl = parseInt($(target).data("level-nb"));
-  $(".rhythms-text").html(levels[lvl].rhythms);
+  draw_options(get_levels()[lvl], null, null);
 }
 
 function no_level_hover() {
-  $(".rhythms-text").html("");
+  refresh_options();
 }
 
 function ripple(target) {
@@ -232,6 +300,11 @@ $(function () {
     next_tab();
   });
 
+  $(".adv-setup select").change(function() {
+    refresh_options();
+  });
+  $("#pick-difficulty input").change(refresh_options);
+
   $("#navbar-menu #validate-btn").click(validate);
 
   $('#level-slider label').bind("mouseenter", function (e) {
@@ -261,6 +334,10 @@ $(function () {
       $(".diffmenu:not(." + menu + ")").hide();
       $("." + menu).show();
     }
+  });
+
+  $(".lang-radio").change(function(event) {
+    refresh_options();
   });
 
   tab_goto(0);

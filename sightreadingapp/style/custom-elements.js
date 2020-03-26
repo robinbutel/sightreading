@@ -52,6 +52,7 @@ $(function () {
       menu.css('--t', index * -41 + 'px');
       selected.attr('selected', false);
       select.find('option').eq(index).attr('selected', true);
+      select.change();
 
       menu.addClass(index > selected.index() ? 'tilt-down' : 'tilt-up');
 
