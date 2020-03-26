@@ -86,6 +86,17 @@ body {
   margin-bottom: 30px;
 }
 
+.pick-menu .pick-subtitle {
+  color: #5f616b;
+  font-weight: 400;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+#pick-timesigscale .pick-title {
+  margin-bottom: 10px;
+}
+
 .pick-menu .pick-little-title {
   color: #5f616b;
   font-weight: 100;
@@ -108,6 +119,11 @@ body {
   padding: 50px 80px;
   margin: 10px 20px 20px 20px;
   text-align: center;
+}
+
+.pick-menu .pick-list .element.checked {
+  background-color: #CFFFFF;
+  border: 2px solid #2f9da6;
 }
 
 .pick-menu .pick-list>.element:hover {
@@ -288,7 +304,7 @@ body {
 }
 
 .level-description {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   background-color: #fff;
@@ -313,4 +329,26 @@ body {
 .level-description .description-title {
   font-weight: 300;
   margin-bottom: 20px;
+}
+
+.ripple {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 168, 168, 0.4);
+  transform: scale(0);
+  position: absolute;
+  opacity: 1;
+  z-index: 1000;
+}
+.rippleEffect {
+    animation: rippleDrop 1s linear;
+}
+
+@keyframes rippleDrop {
+  30% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }

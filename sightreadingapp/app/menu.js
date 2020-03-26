@@ -1,13 +1,85 @@
-instrument = "no-instrument";
-level = 0;
-timesig = "4/4";
-scale = "C Major";
+var instrument = "";
+var timesig = "";
+var scale = "";
 
-tabs = ["instrument", "difficulty", "timesigscale"];
+function validate() {
+  console.log("validating");
 
-current_tab = -1;
+  /* instrument */
+  if(instrument == "") {
+    goto_needed_tab(0);
+    return;
+  }
+  console.log("instrument : " + instrument);
 
-levels = {
+  /* rhythms settings */
+  var rhythm_options = {
+    variety: 0,
+    independence: 0,
+    position: 0,
+    octave: 0,
+    chords: 0,
+    leap: 2,
+    accidentals: 0
+  }
+
+  if($("#easy").prop("checked")) {
+    // Easy Setup
+    console.log("easy setup");
+    level_checked = $(".easy-setup .level-item:checked");
+    level = level_checked.attr("id");
+    if(level == null) {
+      goto_needed_tab(1);
+      return;
+    }
+    console.log("level : " + level);
+  } else {
+    // Advanced Setup
+    console.log("advanced setup");
+    rhythm_options.variety = $(".rhythm-variety select")[0].selectedIndex;
+    rhythm_options.independence = $(".hand-independence select")[0].selectedIndex;
+    rhythm_options.position = $(".position select")[0].selectedIndex;
+    rhythm_options.octave = $(".octave select")[0].selectedIndex;
+    rhythm_options.chords = $(".chords select")[0].selectedIndex;
+    rhythm_options.leap = $(".leap select")[0].selectedIndex + 2;
+    rhythm_options.accidentals = $(".accidentals input").prop("checked") ? 1 : 0;
+
+    console.log(rhythm_options);
+  }
+
+  /* time signature */
+  possible_sig = [];
+  $("#timesig-picker input:checked").each(function(i, e) {
+    possible_sig.push(e.id[2] + "/" + e.id[3]);
+  });
+  if(possible_sig.length == 0) {
+    goto_needed_tab(2, "timesig-picker");
+    return;
+  }
+  console.log("possible time signatures : " + possible_sig);
+
+  /* scale */
+  possible_scale = [];
+  $("#scale-picker input:checked").each(function(i, e) {
+    possible_scale.push(e.id);
+  });
+  if(possible_scale.length == 0) {
+    goto_needed_tab(2, "scale-picker");
+    return;
+  }
+  console.log("possible scales : " + possible_scale);
+
+  var get_str = "?instrument=" + instrument + "&v=" + rhythm_options.variety + "&i" + rhythm_options.independence +
+    "&p=" + rhythm_options.position + "&o=" + rhythm_options.octave + "&c=" + rhythm_options.chords + "&l=" + rhythm_options.leap +
+    "&a=" + rhythm_options.accidentals + "&psig=" + possible_sig + "&psc=" + possible_scale;
+  console.log(get_str);
+}
+
+var tabs = ["instrument", "difficulty", "timesigscale"];
+
+var current_tab = -1;
+
+var levels = {
   1: {rhythms : "not very much"},
   2: {rhythms : "a little bit"},
   3: {rhythms : "a bit more"},
@@ -16,14 +88,17 @@ levels = {
 }
 
 function pick_instrument(event) {
-  instrument = event.target.id;
-
-  next_tab();
+  if($(event.currentTarget).hasClass("checked")) {
+    instrument = "";
+    $(event.currentTarget).toggleClass("checked");
+  } else {
+    instrument = event.currentTarget.id;
+    $(event.currentTarget).toggleClass("checked");
+    next_tab();
+  }
 }
 
 function pick_level(event) {
-  levelid = event.target.id;
-
   next_tab();
 }
 
@@ -31,13 +106,28 @@ function next_tab() {
   tab_goto(current_tab+1);
 }
 
-function validate() {
-  alert("validating...");
+function goto_needed_tab(goto_tab, scroll_to="") {
+  tab_goto(goto_tab);
+
+  ripple($("#tab-" + tabs[goto_tab])[0]);
+
+  if(scroll_to != "") {
+    console.log($("#" + scroll_to).offset().top);
+    setTimeout(function() {
+      $([document.documentElement, document.body]).animate({
+        scrollTop: ($("#" + scroll_to).offset().top - 200)
+      }, 500);
+    }, 300);
+  }
 }
 
 function tab_goto(goto_tab) {
+  last_tab = -1;
   if(current_tab != -1) {
     last_tab = current_tab;
+  }
+  if(current_tab == goto_tab) {
+    return;
   }
   current_tab = goto_tab;
 
@@ -47,12 +137,12 @@ function tab_goto(goto_tab) {
   }
 
   $("#tab-" + tabs[current_tab]).addClass("active");
-  if(current_tab != -1) {
+  if(last_tab != -1) {
     $("#tab-" + tabs[last_tab]).removeClass("active");
   }
 
   $("#pick-" + tabs[current_tab]).show(200);
-  if(current_tab != -1) {
+  if(last_tab != -1) {
     $("#pick-" + tabs[last_tab]).hide(200);
   }
 }
@@ -73,6 +163,39 @@ function level_hover(target) {
 
 function no_level_hover() {
   $(".rhythms-text").html("");
+}
+
+function ripple(target) {
+  $(target).prepend("<span class='ripple'></span>");
+  $(".ripple").remove();
+  // Setup
+  var posX = $(target).offset().left;
+  var posY = $(target).offset().top;
+  var width = $(target).width();
+  var height = $(target).height();
+
+  // Add the element
+  $("<span class='ripple'></span>").appendTo("body");
+
+ // Make it round!
+  if(width >= height) {
+    height = width;
+  } else {
+    width = height;
+  }
+
+  // Get the center of the element
+  var x = posX;
+  var y = posY - height / 2;
+
+  $(".ripple").css({
+    width: width,
+    height: height,
+    top: y + 'px',
+    left: x + 'px'
+  }).addClass("rippleEffect");
+
+  setTimeout(function() { $(".ripple").remove(); }, 300);
 }
 
 $(function () {

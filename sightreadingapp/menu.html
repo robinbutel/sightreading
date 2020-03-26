@@ -169,6 +169,15 @@
           <label for="adv" class="lang lang-advsett">Advanced Settings</label>
         </div>
         <div class="adv-setup diffmenu" style="display: none;">
+          <div class="rhythm-variety pick-submenu"><p class="lang lang-variety">Rhythm Variety</p>
+            <select data-menu>
+              <option class="lang lang-onlywhites" selected>Only whites</option>
+              <option class="lang lang-halfsover" >Halfs and over</option>
+              <option class="lang lang-quartersover" >Quarters and over</option>
+              <option class="lang lang-eightsover" >Eights and over</option>
+              <option class="lang lang-sixteenthsover" >Sixteenths and over</option>
+            </select>
+          </div>
           <div class="hand-independence pick-submenu"><p class="lang lang-handind">Hand Independence</p>
             <select data-menu>
               <option class="lang lang-nevertogether" selected>Never Play together</option>
@@ -188,19 +197,19 @@
               <option class="lang lang-octp">Octave+</option>
             </select>
           </div>
-          <div class="pick-submenu"><p class="lang lang-position">Position</p>
+          <div class="position pick-submenu"><p class="lang lang-position">Position</p>
             <select data-menu>
               <option class="lang lang-keeppos" selected>Keep starting hand position</option>
               <option class="lang lang-dontkeeppos">Don't keep starting hand position</option>
             </select>
           </div>
-          <div class="pick-submenu"><p class="lang lang-oct">Octave</p>
+          <div class="octave pick-submenu"><p class="lang lang-oct">Octave</p>
             <select data-menu>
               <option class="lang lang-stayoct" selected>Stay in octave</option>
               <option class="lang lang-gooutoct">Possibly go out of octave</option>
             </select>
           </div>
-          <div class="pick-submenu"><p class="lang lang-choords">Choords</p>
+          <div class="chords pick-submenu"><p class="lang lang-chords">Chords</p>
             <select data-menu>
               <option class="lang lang-none" selected>None</option>
               <option class="lang lang-n2n">2 notes</option>
@@ -208,7 +217,7 @@
               <option class="lang lang-n4n">4 notes</option>
             </select>
           </div>
-          <div class="pick-submenu submenu-text checkbox-cont">
+          <div class="accidentals pick-submenu submenu-text checkbox-cont">
             <input id="c1" type="checkbox">
             <label for="c1" class="lang lang-accidentals">Accidentals</label>
           </div>
@@ -224,9 +233,10 @@
 
     <div id="pick-timesigscale" class="pick-menu" style="display: none;">
       <p class="pick-title"><span class="lang lang-timesig">Time signature</span></p>
+      <p class="pick-subtitle"><span class="lang lang-oneorseveral">Choose one or several elements</span></p>
       <div id="timesig-picker" class="array-picker">
         <div class="array-picker-container">
-          <input id="ts44" name="timesig-checkbox" type="checkbox" class="timesig-radio" checked/>
+          <input id="ts44" name="timesig-checkbox" type="checkbox" class="timesig-radio"/>
           <label for="ts44" class="item">4/4</label>
         </div>
         <div class="array-picker-container">
@@ -251,11 +261,12 @@
         </div>
       </div>
       <p class="pick-title"><span class="lang lang-scale">Scale</span></p>
+      <p class="pick-subtitle"><span class="lang lang-oneorseveral">Choose one or several elements</span></p>
       <div id="scale-picker" class="scale-container">
         <p class="category-title lang lang-suggested">Suggested</span>
         <div class="scale-category array-picker">
           <div class="array-picker-container">
-            <input id="cmaj" name="scale-checkbox" type="checkbox" class="timesig-radio" checked/>
+            <input id="cmaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
             <label for="cmaj" class="item lang lang-cmaj">C Major</label>
           </div>
           <div class="array-picker-container">
@@ -278,7 +289,7 @@
         <p class="category-title lang lang-major">Major</span>
         <div class="scale-category array-picker major">
           <div class="array-picker-container">
-            <input id="emaj" name="scale-checkbox" type="checkbox" class="timesig-radio" checked/>
+            <input id="emaj" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
             <label for="emaj" class="item">E Major</label>
           </div>
           <div class="array-picker-container">
@@ -321,7 +332,7 @@
         <p class="category-title lang lang-minor">Minor</span>
         <div class="scale-category array-picker">
           <div class="array-picker-container">
-            <input id="amin" name="scale-checkbox" type="checkbox" class="timesig-radio" checked/>
+            <input id="amin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
             <label for="amin" class="item lang lang-amin">A Minor</label>
           </div>
           <div class="array-picker-container">
@@ -349,7 +360,7 @@
             <label for="ddmin" class="item lang lang-ddmin">D# Minor</label>
           </div>
           <div class="array-picker-container">
-            <input id="admin" name="scale-checkbox" type="checkbox" class="timesig-radio" checked/>
+            <input id="admin" name="scale-checkbox" type="checkbox" class="timesig-radio"/>
             <label for="admin" class="item lang lang-admin">A# Minor</label>
           </div>
           <div class="array-picker-container">
