@@ -33,7 +33,10 @@ CHORDS
 LEAP
 2: interval de 2 notes
 3: interval de 3 notes
+4: intervalle de 4 notes
 5: interval de 5 notes
+6: intervalle de 6 notes
+7: intervalle de 7 notes
 8: interval d'un octave
 9: interval de plus d'un octave
 
