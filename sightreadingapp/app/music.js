@@ -10,17 +10,17 @@ var bass_current_x = 0;
 var current_line = 0;
 var lines = [];
 
-var measures_by_line = 4;
-var measure_width = 300;
+var bars_by_line = 4;
+var bar_width = 300;
 
-var beat_per_measure = 0;
+var beat_per_bar = 0;
 
 var scale = "C";
 var time_signature = "4/4";
 
-function setup_music_renderer(_measures_by_line, _measure_width) {
-  measures_by_line = _measures_by_line;
-  measure_width = _measure_width;
+function setup_music_renderer(_bars_by_line, _bar_width) {
+  bars_by_line = _bars_by_line;
+  bar_width = _bar_width;
 }
 
 function draw_score(div_id, w, h, _scale="C", _timesig="4/4", scaling=0.7) {
@@ -34,11 +34,11 @@ function draw_score(div_id, w, h, _scale="C", _timesig="4/4", scaling=0.7) {
   scale = _scale;
   time_signature = _timesig;
 
-  beat_per_measure = parseInt(time_signature[0]);
+  beat_per_bar = parseInt(time_signature[0]);
 }
 
-function get_measure_width(tnotes, bnotes) {
-  def_width = measure_width;
+function get_bar_width(tnotes, bnotes) {
+  def_width = bar_width;
 
   return def_width;
 }
@@ -68,8 +68,8 @@ function draw_notes(treble_notes, bass_notes, tstave, bstave) {
   bass_current_x = bstave.width + bstave.x;
 }
 
-function draw_initial_measures(treble_notes, bass_notes) {
-  w = get_measure_width(treble_notes, bass_notes);
+function draw_initial_bars(treble_notes, bass_notes) {
+  w = get_bar_width(treble_notes, bass_notes);
   var stave_treble = new VF.Stave(50, current_line * 250 + 10, w);
   var stave_bass = new VF.Stave(50, current_line * 250 + 110, w);
 
@@ -102,20 +102,20 @@ function draw_initial_measures(treble_notes, bass_notes) {
   lines.push({treble: [stave_treble], bass: [stave_bass]});
 }
 
-function draw_measure(treble_notes, bass_notes) {
+function draw_bar(treble_notes, bass_notes) {
   if(treble_current_x == 0) {
-    draw_initial_measures(treble_notes, bass_notes);
+    draw_initial_bars(treble_notes, bass_notes);
     return;
   }
 
-  if(lines[current_line].treble.length >= measures_by_line) {
+  if(lines[current_line].treble.length >= bars_by_line) {
     draw_line_ending_bar(current_line);
     current_line += 1;
-    draw_initial_measures(treble_notes, bass_notes);
+    draw_initial_bars(treble_notes, bass_notes);
     return;
   }
 
-  w = get_measure_width(treble_notes, bass_notes);
+  w = get_bar_width(treble_notes, bass_notes);
   var tstave = new VF.Stave(treble_current_x, treble_current_y, w);
   var bstave = new VF.Stave(bass_current_x, bass_current_y, w);
 
@@ -150,6 +150,20 @@ function draw_ending_bar() {
   connector.draw();
 }
 
+function music(options) {
+  draw_score("score", 900, 1000);
+
+  var meas;
+  var i;
+  for(i = 0; i<options.bars; i++) {
+    meas = get_music(options.timesig, options.scale, options.variety);
+    draw_bar(meas.treble, meas.bass);
+  }
+
+  draw_ending_bar();
+}
+
+/*
 // TEMP: testing this
 var tnotes = [
   new VF.StaveNote({clef: "treble", keys: ["c/5"], duration: "8" }),
@@ -171,17 +185,18 @@ var bnotes = [
 
 $(function() {
   draw_score("score", 900, 1000);
-  draw_measure(tnotes, bnotes);
-  draw_measure(tnotes, null);
-  draw_measure(null, bnotes);
-  draw_measure(tnotes, bnotes);
+  draw_bar(tnotes, bnotes);
+  draw_bar(tnotes, null);
+  draw_bar(null, bnotes);
+  draw_bar(tnotes, bnotes);
   m1 = get_music("4/4", "cmaj", 4);
-  draw_measure(m1.treble, m1.bass);
+  draw_bar(m1.treble, m1.bass);
   m1 = get_music("4/4", "cmaj", 3);
-  draw_measure(m1.treble, m1.bass);
+  draw_bar(m1.treble, m1.bass);
   m1 = get_music("4/4", "cmaj", 2);
-  draw_measure(m1.treble, m1.bass);
+  draw_bar(m1.treble, m1.bass);
   m1 = get_music("4/4", "cmaj", 1);
-  draw_measure(m1.treble, m1.bass);
+  draw_bar(m1.treble, m1.bass);
   draw_ending_bar();
 });
+*/
