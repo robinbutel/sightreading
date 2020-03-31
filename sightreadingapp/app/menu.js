@@ -68,10 +68,13 @@ function validate() {
   }
   console.log("possible scales : " + possible_scale);
 
-  var get_str = "?instrument=" + instrument + "&v=" + rhythm_options.variety + "&i" + rhythm_options.independence +
+  var get_str = "?instrument=" + instrument + "&v=" + rhythm_options.variety + "&i=" + rhythm_options.independence +
     "&p=" + rhythm_options.position + "&o=" + rhythm_options.octave + "&c=" + rhythm_options.chords + "&l=" + rhythm_options.leap +
     "&a=" + rhythm_options.accidentals + "&psig=" + possible_sig + "&psc=" + possible_scale;
   console.log(get_str);
+
+  console.log("get out !");
+  document.location.href = "app.html" + get_str;
 }
 
 var tabs = ["instrument", "difficulty", "timesigscale"];
@@ -123,13 +126,14 @@ function refresh_options() {
     possible_scale.push(e.id);
   });
 
-  draw_options(rhythm_options, null, null);
+  draw_options(rhythm_options, possible_sig, possible_scale);
 }
 
-function draw_options(rhythm_options, possible_sig, possible_scale) {
+function draw_options(rhythm_options, possible_sig, possible_scales) {
   var text;
   var options;
   var index;
+  var sc;
 
   for(var key in rhythm_options) {
     if(key == "accidentals") {
@@ -145,6 +149,27 @@ function draw_options(rhythm_options, possible_sig, possible_scale) {
       text = $("." + key + " option")[index].innerHTML;
       $("." + key + "-text").html(text);
     }
+  }
+
+  if(possible_sig != null && possible_sig.length > 0) {
+    $(".timesig-text").html("");
+    possible_sig.forEach(function(e, i) {
+      if(i > 0) {
+        $(".timesig-text").append(", ");
+      }
+      $(".timesig-text").append(e);
+    });
+  }
+
+  if(possible_scales != null && possible_scales.length > 0) {
+    $(".scales-text").html("");
+    possible_scales.forEach(function(e, i) {
+      if(i > 0) {
+        $(".scales-text").append(", ");
+      }
+      sc = $("#" + e).next().text();
+      $(".scales-text").append(sc);
+    });
   }
 }
 
@@ -174,7 +199,7 @@ function next_tab() {
 function goto_needed_tab(goto_tab, scroll_to="") {
   tab_goto(goto_tab);
 
-  pop_bubble("missing-p", 1500, "#validate-btn")
+  pop_bubble("missing-p", 1500, "#validate-btn");
   ripple($("#tab-" + tabs[goto_tab])[0]);
 
   if(scroll_to != "") {
@@ -217,6 +242,15 @@ function tab_goto(goto_tab) {
   } else if($(window).width()>600) {
     $(".level-description").show();
     refresh_options();
+  }
+
+  if(current_tab == 2) {
+    if($("#timesig-picker input:checked").length > 0) {
+      $(".des-timesig").show();
+    }
+    if($("#scales-picker input:checked").length > 0) {
+      $(".des-scales").show();
+    }
   }
 }
 
@@ -313,6 +347,24 @@ $(function () {
   $('#level-slider label').bind("mouseleave", function (e) {
     no_level_hover();
   });
+
+  $("#scale-picker input").change(() => {
+    $(".des-scales").show();
+    refresh_options();
+  });
+  $("#timesig-picker input").change(() => {
+    $(".des-timesig").show();
+    refresh_options();
+  });
+
+  /* Missing parameter */
+  if(window.location.href.indexOf("mp") > -1) {
+    if($("#validate-btn").is(':visible')) {
+      pop_bubble("missing-p", 3000, "#validate-btn");
+    } else {
+      pop_bubble("missing-p", 3000, "#continue-btn");
+    }
+  }
 
   $(".diffsett").change(function(e) {
     if(e.currentTarget.checked) {
